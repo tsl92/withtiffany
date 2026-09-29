@@ -524,7 +524,7 @@ footer small{flex-basis:100%;font:700 12px/1 var(--talk);letter-spacing:.06em;co
      Paste your free Web3Forms access key between the quotes below.
      Get it at web3forms.com (enter tiffany@withtiffany.co, the key arrives by email).
      Until a key is set, visitors get a copy-and-email fallback instead. */
-  const WEB3FORMS_KEY='';
+  const WEB3FORMS_KEY='71be7b4c-1251-4d22-86c1-651b3b6ae578';
   form.addEventListener('submit',async e=>{e.preventDefault();const d=new FormData(form);
     const name=(d.get('name')||'').trim(),email=(d.get('email')||'').trim(),phone=(d.get('phone')||'').trim();
     if(!name||!/^\S+@\S+\.\S+$/.test(email)||phone.replace(/\D/g,'').length<6){err.textContent='Add your name, a valid email and a phone number so I can reply.';err.hidden=false;return}
