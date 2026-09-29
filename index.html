@@ -102,17 +102,18 @@ section{position:relative}
 .hint i{width:1px;height:34px;background:linear-gradient(var(--paper),transparent)}
 @media (max-width:900px){
   .stage{grid-template-columns:1fr;align-content:end;padding-bottom:84px}
-  .portrait{position:absolute;right:-4%;top:9%;width:min(58vw,270px);opacity:.6;z-index:0}
+  .portrait{position:absolute;right:-4%;top:9%;width:min(62vw,340px);opacity:.6;z-index:0}
   .hand{display:none}
   .slot{font-size:clamp(40px,12.4vw,80px)}
 }
 @media (max-width:767px){
   .stage{align-content:center;gap:14px;padding-top:88px;padding-bottom:64px}
-  .portrait{position:relative;right:auto;top:auto;order:-1;justify-self:start;width:min(44vw,210px,26svh);opacity:1;z-index:1}
+  .portrait{position:relative;right:auto;top:auto;order:-1;justify-self:start;width:min(60vw,280px,31svh);opacity:1;z-index:1}
   .hcopy{gap:14px}
   .lede{font-size:16px}
 }
 
+@media (min-width:901px) and (max-width:1199px){.portrait{width:min(100%,480px)}}
 /* 2 · rooms (logo carousel) */
 .rooms{padding-block:clamp(70px,9vw,120px)}
 .rooms .intro{display:grid;gap:12px;margin-bottom:clamp(26px,3.5vw,44px)}
