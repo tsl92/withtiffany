@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Tiffany Santisteban Lagos</title>
-<meta name="description" content="Tiffany Santisteban Lagos. Twelve years inside the probably fastest-paced, most addictive industry there is.">
+<meta name="description" content="Tiffany Santisteban Lagos. Twelve years inside the probably fastest-paced industry there is.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@700;800;900&family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=Nunito+Sans:wght@300;400;700;800&family=Urbanist:ital,wght@1,300&family=Caveat:wght@600&display=swap">
@@ -105,6 +105,12 @@ section{position:relative}
   .portrait{position:absolute;right:-4%;top:9%;width:min(58vw,270px);opacity:.6;z-index:0}
   .hand{display:none}
   .slot{font-size:clamp(40px,12.4vw,80px)}
+}
+@media (max-width:767px){
+  .stage{align-content:center;gap:14px;padding-top:88px;padding-bottom:64px}
+  .portrait{position:relative;right:auto;top:auto;order:-1;justify-self:start;width:min(44vw,210px,26svh);opacity:1;z-index:1}
+  .hcopy{gap:14px}
+  .lede{font-size:16px}
 }
 
 /* 2 · rooms (logo carousel) */
@@ -335,10 +341,10 @@ footer small{flex-basis:100%;font:700 12px/1 var(--talk);letter-spacing:.06em;co
         <div class="hcopy">
           <span class="name">Tiffany Santisteban Lagos</span>
           <h1 class="slot" aria-label="get noticed. get loved. stay loved."><span class="window" aria-hidden="true"><span class="reel" id="reel"><span>get noticed.</span><span>get loved.</span><span>stay loved.</span></span></span></h1>
-          <p class="lede" data-deh="Zwölf Jahre in &lt;b&gt;der wohl schnelllebigsten Branche mit dem größten Suchtpotenzial überhaupt.&lt;/b&gt; Heute arbeite ich nur mit einer Handvoll Unternehmen gleichzeitig. Und nutze mein Wissen für etwas Gutes.">Twelve years inside <b>the probably fastest-paced, most addictive industry there is.</b> Now I work with only a handful of businesses at a time. Using my skills for good.</p>
-          <div class="flipline" aria-label="Getting attention is easy. Or is it?" data-de-aria="Aufmerksamkeit bekommen ist leicht. Oder etwa nicht?">
+          <p class="lede" data-deh="Zwölf Jahre in &lt;b&gt;der wohl schnelllebigsten Branche überhaupt.&lt;/b&gt; Heute arbeite ich ausschließlich mit einer Handvoll Unternehmen gleichzeitig. Und nutze mein Wissen „for good“.">Twelve years inside <b>the probably fastest-paced industry there is.</b> Now I work with only a handful of businesses at a time. Using my skills for good.</p>
+          <div class="flipline" aria-label="Getting attention is easy. Or is it?" data-de-aria="Aufmerksamkeit bekommen ist leicht. Oder ist es das wirklich?">
             <span class="up" aria-hidden="true" data-de="Aufmerksamkeit bekommen ist leicht.">getting attention is easy.</span>
-            <span class="down" id="flip" aria-hidden="true" data-de="Oder etwa nicht?">or is it?</span>
+            <span class="down" id="flip" aria-hidden="true" data-de="Oder ist es das wirklich?">or is it?</span>
           </div>
         </div>
         <div class="portrait" id="portrait">
@@ -362,14 +368,14 @@ footer small{flex-basis:100%;font:700 12px/1 var(--talk);letter-spacing:.06em;co
 
 <section class="numbers" aria-labelledby="num-h">
   <div class="wrap">
-    <div class="intro rise"><span class="label" data-de="In Zahlen">In numbers</span><h2 id="num-h" data-de="Was passiert ist, als ich mit am Tisch saß.">What happened when I was in the room.</h2></div>
+    <div class="intro rise"><span class="label" data-de="In Zahlen">In numbers</span><h2 id="num-h" data-de="Warum Unternehmer mit mir arbeiten.">What happened when I was in the room.</h2></div>
     <div class="stats">
-      <div class="stat glass hi"><span class="stamp" aria-hidden="true" data-de="wirklich passiert">true story</span><span class="rec" aria-hidden="true" data-de="Rekord">record</span><div class="board" data-flap="€10M+" aria-label="€10M+"></div><p data-de="Monate, mit besonders wertvollen Kunden.">months, from high-value customers.</p></div>
-      <div class="stat glass hi"><span class="stamp" aria-hidden="true" data-de="wirklich passiert">true story</span><span class="rec" aria-hidden="true" data-de="Rekord">record</span><div class="board" data-flap="€1M+" aria-label="€1M+"></div><p data-de="Monate, mit vermögenden Privatkunden.">months, from high-net-worth clients.</p></div>
-      <div class="stat glass"><span class="stamp" aria-hidden="true" data-de="wirklich passiert">true story</span><div class="board" data-flap="€400K+" aria-label="€400K+"></div><p data-de="in drei Monaten eingespart.">saved in three months.</p></div>
-      <div class="stat glass"><span class="stamp" aria-hidden="true" data-de="wirklich passiert">true story</span><div class="board" data-flap="+28%" aria-label="+28%"></div><p data-de="Wachstum gegenüber dem Vorjahr.">growth, year on year.</p></div>
-      <div class="stat glass"><span class="stamp" aria-hidden="true" data-de="wirklich passiert">true story</span><div class="board" data-flap="40+" aria-label="40+"></div><p data-de="Märkte.">markets.</p></div>
-      <div class="stat glass"><span class="stamp" aria-hidden="true" data-de="wirklich passiert">true story</span><div class="board" data-flap="1st" data-flap-de="1." aria-label="1st"></div><p data-de="Pitch-Wettbewerb. Direkt gewonnen.">pitch competition entered. Won.</p></div>
+      <div class="stat glass hi"><span class="stamp" aria-hidden="true">true story</span><span class="rec" aria-hidden="true" data-de="Rekord">record</span><div class="board" data-flap="€10M+" aria-label="€10M+"></div><p data-de="Rekordmonate eingebracht.">months, from high-value customers.</p></div>
+      <div class="stat glass hi"><span class="stamp" aria-hidden="true">true story</span><span class="rec" aria-hidden="true" data-de="Rekord">record</span><div class="board" data-flap="€1M+" aria-label="€1M+"></div><p data-de="Monate, mit vermögenden Privatkunden.">months, from high-net-worth clients.</p></div>
+      <div class="stat glass"><span class="stamp" aria-hidden="true">true story</span><div class="board" data-flap="€400K+" aria-label="€400K+"></div><p data-de="in drei Monaten eingespart.">saved in three months.</p></div>
+      <div class="stat glass"><span class="stamp" aria-hidden="true">true story</span><div class="board" data-flap="+28%" aria-label="+28%"></div><p data-de="Wachstum gegenüber dem Vorjahr.">growth, year on year.</p></div>
+      <div class="stat glass"><span class="stamp" aria-hidden="true">true story</span><div class="board" data-flap="40+" aria-label="40+"></div><p data-de="Märkte.">markets.</p></div>
+      <div class="stat glass"><span class="stamp" aria-hidden="true">true story</span><div class="board" data-flap="1st" data-flap-de="1." aria-label="1st"></div><p data-de="Pitch-Wettbewerb gewonnen, bevor unser Produkt überhaupt live war.">pitch competition entered. Won.</p></div>
     </div>
     <div class="deck-ui" aria-hidden="true"><span class="count" id="dcount">01 / 06</span><span class="dots" id="ddots"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span><span data-de="scrollen &amp; weiterwischen">scroll to swipe</span></div>
   </div>
@@ -395,7 +401,7 @@ footer small{flex-basis:100%;font:700 12px/1 var(--talk);letter-spacing:.06em;co
 <section class="path" id="path" aria-labelledby="path-h">
   <div class="ppin">
     <div class="wrap">
-      <div class="intro"><span class="label" data-de="Die Kurzfassung">The short version</span><h2 id="path-h" data-de="Eine Reise über zehn Jahre">A decade-long journey</h2></div>
+      <div class="intro"><span class="label" data-de="Die Kurzfassung">The short version</span><h2 id="path-h" data-de="Eine Reise über zehn+ Jahre">A decade-long journey</h2></div>
       <div class="tl" id="tl">
         <div class="rail" aria-hidden="true"><i id="rail"></i></div>
         <ol class="steps">
@@ -425,10 +431,10 @@ footer small{flex-basis:100%;font:700 12px/1 var(--talk);letter-spacing:.06em;co
   <div class="wrap">
     <div class="txt">
       <span class="label" data-de="Nur auf Empfehlung">By introduction</span>
-      <h2 id="intro-h" data-de="Wenn du hier bist, hat dich wahrscheinlich jemand geschickt.">If you're here, someone probably sent you.</h2>
-      <p data-de="Ich arbeite pro Jahr nur mit wenigen Unternehmen. Wenn du hier bist, wurdest du also wahrscheinlich empfohlen. Erzähl mir einfach, wer du bist. Wenn es passt, melde ich mich.">I take on only a small number of businesses each year, so if you're here you've probably been referred. Simply tell me who you are, and I'll be in touch if it's a fit.</p>
+      <h2 id="intro-h" data-de="Wenn du hier bist, hat dich höchstwahrscheinlich jemand weiterempfohlen.">If you're here, someone probably sent you.</h2>
+      <p data-de="Ich arbeite pro Jahr nur mit wenigen Unternehmen. Da diese mich meist weiterempfehlen, mache ich wenig Werbung. Wenn du hier bist, wurdest du also wahrscheinlich empfohlen. Also erzähl mir einfach von dir oder deinem Unternehmen. Wenn es passt, melde ich mich.">I take on only a small number of businesses each year, so if you're here you've probably been referred. Simply tell me who you are, and I'll be in touch if it's a fit.</p>
       <div class="seats" aria-label="Currently, only one space left" data-de-aria="Aktuell ist nur noch ein Platz frei"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><span data-de="Aktuell ist nur noch ein Platz frei.">Currently, only one space left.</span></div>
-      <div class="mailbox"><div class="mail"><span id="mail">tiffany@withtiffany.co</span><button class="copy" type="button" data-copy="mail" data-de="Kopieren">Copy</button></div><small class="typo" data-de="Jup. &#39;.co&#39;, nicht &#39;.com&#39;. Tippfehler mache ich nicht. :)">Jup. It's '.co', not '.com'. I don't do typos. :)</small></div>
+      <div class="mailbox"><div class="mail"><span id="mail">tiffany@withtiffany.co</span><button class="copy" type="button" data-copy="mail" data-de="Kopieren">Copy</button></div><small class="typo" data-de="Jup. &#39;.co&#39;, nicht &#39;.com&#39;. I don&#39;t do „Tippfehler“. :)">Jup. It's '.co', not '.com'. I don't do typos. :)</small></div>
     </div>
     <form class="form glass" id="enquiry" novalidate>
       <div class="two">
