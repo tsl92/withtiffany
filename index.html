@@ -13,9 +13,15 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23E6E8E8%27/%3E%3Ctext x=%2732%27 y=%2745%27 text-anchor=%27middle%27 font-family=%27Helvetica,Arial,sans-serif%27 font-weight=%27300%27 font-size=%2738%27 fill=%27%230D0D0E%27%3E+%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="a/poster.jpg">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,300;125,500;125,600&family=Instrument+Sans:wght@400;500&family=Jost:wght@400;500&display=swap">
+<link rel="preload" href="a/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(a/fonts/archivo-latin-wdth-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(a/fonts/archivo-latin-ext-wdth-normal.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Instrument Sans";font-weight:400;font-display:swap;src:url(a/fonts/instrument-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Instrument Sans";font-weight:500;font-display:swap;src:url(a/fonts/instrument-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:400;font-display:swap;src:url(a/fonts/jost-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:500;font-display:swap;src:url(a/fonts/jost-latin-500-normal.woff2) format("woff2")}
+</style>
 <style>
 /* One film, one page. A single pinned canvas: the 25 s film scrubbed by scroll, chapters as held frames with keypad glass, then the strand dissolves into the glass + and one question. */
 :root{
@@ -472,7 +478,7 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
 <footer class="bleed">
   <p class="big">get noticed. get loved. <b>stay loved.</b><span class="me" data-de="mit mir.">with me.</span></p>
   <svg class="logo" viewBox="8.0 -23.4 4654.0 1975.4" aria-label="with Tiffany"><use href="#logo"/></svg>
-  <div class="meta"><span>© 2026 Tiffany Santisteban Lagos</span><span data-de="Nürnberg · London">Nuremberg · London</span><a href="https://www.linkedin.com/in/tiffanyslagos" target="_blank" rel="noopener">LinkedIn</a></div>
+  <div class="meta"><span>© 2026 Tiffany Santisteban Lagos</span><span data-de="Nürnberg · London">Nuremberg · London</span><a href="https://www.linkedin.com/in/tiffanyslagos" target="_blank" rel="noopener">LinkedIn</a><a href="legal.html">legal notice · privacy</a></div>
   <small data-de="Markennamen und Logos gehören ihren Inhabern und zeigen frühere Arbeitgeber und Kunden.">Brand names and logos belong to their owners and show past employers and clients.</small>
 </footer>
 
@@ -487,7 +493,7 @@ function applyLang(l){LANG=l;document.documentElement.lang=l;
   document.querySelectorAll('[data-de-ph]').forEach(e=>{if(e.dataset.enph===undefined)e.dataset.enph=e.placeholder;e.placeholder=l==='de'?e.dataset.dePh:e.dataset.enph});
   document.querySelectorAll('[data-de-aria]').forEach(e=>{if(e.dataset.enaria===undefined)e.dataset.enaria=e.getAttribute('aria-label');e.setAttribute('aria-label',l==='de'?e.dataset.deAria:e.dataset.enaria)});
   document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===l)));
-  try{localStorage.setItem('wt-lang',l)}catch(e){}}
+  if(typeof DE_ON!=='undefined'&&DE_ON){try{localStorage.setItem('wt-lang',l)}catch(e){}}}
 
 (()=>{
 const W=1920,H=1080,DUR=25.2,FADE_A=20.6,FADE_B=22.8;
@@ -522,7 +528,7 @@ mqPhone.addEventListener('change',e=>{phone=e.matches;applyTimings();lastPhase=-
 /* scroll progress → film time; flat segments are held frames; the film is over by .90 */
 const MAP=[[0,0],[.14,3],[.18,4.5],[.30,4.5],[.34,7],[.47,12],[.52,12],[.58,18.6],[.72,18.6],[.76,21.4],[.86,21.4],[.90,DUR],[1,DUR]];
 function timeAt(p){for(let i=1;i<MAP.length;i++){if(p<=MAP[i][0]){const [a,ta]=MAP[i-1],[b,tb]=MAP[i];return ta+(p-a)/(b-a)*(tb-ta)}}return DUR}
-function progress(){const r=scrolly.getBoundingClientRect(),run=r.height-innerHeight;return Math.min(1,Math.max(0,-r.top/run))}
+function progress(){const r=scrolly.getBoundingClientRect(),run=r.height-innerHeight;if(!(run>0))return 0;return Math.min(1,Math.max(0,-r.top/run))}
 
 /* particles (approved prototype) */
 let seed=21;const rnd=()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
@@ -649,8 +655,9 @@ const fr=document.querySelector('.ch4 .frames'),dots=$('dots');if(fr&&dots)fr.ad
 const lb=$('lb'),lbImg=$('lbImg'),lbCap=$('lbCap');
 document.querySelectorAll('.wf').forEach(b=>b.addEventListener('click',()=>{lbImg.src=b.querySelector('img').src;lbImg.alt=b.querySelector('img').alt;lbCap.textContent=(LANG==='de'&&b.dataset.capDe)||b.dataset.cap;lb.classList.add('on')}));
 const close=()=>lb.classList.remove('on');$('lbX').addEventListener('click',close);lb.addEventListener('click',e=>{if(e.target===lb)close()});addEventListener('keydown',e=>{if(e.key==='Escape')close()});
-document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));
-{let sv=null;try{sv=localStorage.getItem('wt-lang')}catch(e){}applyLang(sv||((navigator.language||'').toLowerCase().startsWith('de')?'de':'en'))}
+const DE_ON=false; /* German copy is in place; set to true to show the EN | DE switch again */
+if(DE_ON){document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));let sv=null;try{sv=localStorage.getItem('wt-lang')}catch(e){}applyLang(sv||((navigator.language||'').toLowerCase().startsWith('de')?'de':'en'))}
+else{document.querySelectorAll('.lang').forEach(l=>l.style.setProperty('display','none','important'));applyLang('en')}
 })();
 </script>
 
