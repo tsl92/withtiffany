@@ -90,7 +90,7 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .stage{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:linear-gradient(var(--backdrop-hi),var(--backdrop))}
 .frame{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;transition:filter .7s var(--ease),opacity .7s var(--ease)}
 .edge{position:absolute;left:50%;bottom:0;height:60vh;transform:translateX(-50%);background:url(a/edge_wide.png) repeat-y center top;display:none}
-#seq{position:absolute;left:540px;top:0;width:840px;height:1080px;display:none;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%)}
+#seq{position:absolute;left:540px;top:0;width:840px;height:1080px;display:none;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%),linear-gradient(to bottom,#000 70%,transparent 96%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%),linear-gradient(to bottom,#000 70%,transparent 96%);mask-composite:intersect}
 @media (max-width:700px){.edge{display:none}#seq{display:block}.frame video{visibility:hidden}}
 .frame.dim{opacity:.45}
 .frame video,.frame canvas,.frame .dust img{position:absolute;inset:0;width:1920px;height:1080px;display:block}
@@ -113,7 +113,7 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .tag{position:absolute;right:3%;top:calc(80px + env(safe-area-inset-top,0px));font-family:var(--fu);font-size:11px;letter-spacing:.26em;text-transform:uppercase;opacity:0;transition:opacity .6s;color:var(--ink)}
 .ch.on .tag{opacity:.6}
 .tag.side{top:50%;bottom:auto;letter-spacing:.34em;text-shadow:0 0 8px rgba(214,220,222,.95),0 0 18px rgba(214,220,222,.8)}.tag.side.hu{left:auto;right:calc(50% + 17vw)}.tag.side.mc{right:auto;left:calc(50% + 17vw)}.ch.on .tag.side{opacity:.78}
-.ch3 .tag.side{top:31%}.ch2 .tag.side{top:31%}.ch5 .tag.side{top:21%}
+.ch3 .tag.side{top:31%}.ch2 .tag.side{top:31%}.ch5 .tag.side{top:calc(50% - 300px)}
 .bare{background:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}.bare::after{display:none}
 
 /* hero */
@@ -186,9 +186,11 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .flow .rail b:first-of-type{transform:none}.flow .rail b:last-of-type{transform:translateX(-100%)}
 .flow .rail b.lit{opacity:1}
 .flow .rail b small{display:block;font-family:var(--fh);font-stretch:125%;font-weight:600;font-size:11px;letter-spacing:0;text-transform:none;margin-top:2px}
-.col{position:absolute;left:9%;top:27%;display:flex;flex-direction:column;gap:22px;align-items:flex-start;width:80%}
+.col{position:absolute;left:max(40px,8vw);top:50%;transform:translateY(-46%);display:flex;flex-direction:column;gap:14px;align-items:stretch;width:min(420px,29vw)}
+.col .range{max-width:none}
 .col .c{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important}
-.ind{width:100%;max-width:none;box-sizing:border-box;padding:26px 36px 24px;--dx:-20px;display:grid;grid-template-columns:1fr 1.5fr;gap:10px 64px;align-items:center}
+.ind{width:100%;max-width:none;box-sizing:border-box;padding:22px 28px 22px;--dx:-20px;display:block}
+.ind .pm{display:none}
 .ind .sc{margin-bottom:0}
 .ind .tt{font-family:var(--fu);font-size:10px;letter-spacing:.26em;text-transform:uppercase;opacity:.55;display:block;margin-bottom:10px}
 .ind .sc{font-family:var(--fu);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin-bottom:18px}
@@ -337,15 +339,17 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .col{position:static;display:contents}
   .ch5 .c.range,.ch5 .c.ind{position:absolute!important;width:auto;display:block}
   .ch5 .c.fz::before{inset:4px;border-radius:16px;backdrop-filter:blur(18px) brightness(1.1) saturate(1.05);-webkit-backdrop-filter:blur(18px) brightness(1.1) saturate(1.05);background:rgba(255,255,255,.24);-webkit-mask-image:radial-gradient(ellipse 85% 90% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 85% 90% at 50% 50%,#000 60%,transparent 100%)}
-  .ch5 .c.range{padding:12px 16px 8px;top:calc(84px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
+  .ch5 .c.range{padding:16px 20px 6px;top:calc(82px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
+  .ch5 .c.range p{display:none}
+  .ind .pm{display:block;font-size:12.5px;line-height:1.5;font-weight:400;color:var(--graphite);margin:0 0 14px}.ind .pm b{display:inline;font-family:var(--fb);font-weight:600;font-stretch:100%}
   .ch5 .c.ind{--dy:24px}
   .ch5 .c.g{backdrop-filter:blur(6px) saturate(1.3) brightness(1.08);-webkit-backdrop-filter:blur(6px) saturate(1.3) brightness(1.08)}
-  .ch5 .c.range p{margin:0 -10px;padding:8px 10px;border-radius:12px;background:radial-gradient(ellipse 80% 90% at 50% 50%,rgba(238,241,242,.62) 55%,rgba(238,241,242,0) 100%)}.ch5 .c.range .flow .rail{margin-bottom:34px}.ch5 .c.range p{font-size:12px;line-height:1.42}
+  .ch5 .c.range p{margin:0 -10px;padding:8px 10px;border-radius:12px;background:radial-gradient(ellipse 80% 90% at 50% 50%,rgba(238,241,242,.62) 55%,rgba(238,241,242,0) 100%)}.ch5 .c.range .flow .rail{margin-bottom:44px}.ch5 .c.range p{font-size:12px;line-height:1.42}
   .flow .subj{display:block}
-  .range h2{font-size:19px;margin-bottom:6px}.range .eb{display:none}.range p{font-size:11.5px;max-width:none}.flow{margin-top:6px;padding-top:6px}.flow .subj{display:none}.flow .rail{margin-bottom:32px}
+  .range h2{font-size:21px;line-height:1.08;margin-bottom:0}.range .eb{display:none}.flow{margin-top:14px;padding-top:0;border-top:0}.flow .subj{display:none}.flow .rail{margin:0 10px 44px}
   .ch5 .tag{display:none}
   .ch5 .flow .rail b small{font-weight:400}
-  .ind .sc{margin-bottom:14px}.ind .tags{gap:5px}.ind .tags span{font-size:10px;padding:5px 9px}.ind .tt{margin-bottom:7px}.ch5 .c.ind{padding:14px 18px 14px}
+  .ind .sc{margin-bottom:14px}.ind .tags{gap:6px}.ind .tags span{font-size:10px;padding:5px 9px}.ind .tt{margin-bottom:8px}.ch5 .c.ind{padding:18px 20px 18px}
   /* the ask */
   .askc{width:calc(100% - 32px)}
   .askc.open{top:auto;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%)!important;gap:12px}
@@ -448,7 +452,7 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
       <div class="col"><div class="g c range fz" data-at="0.77" style="--l:14%;--t:28%"><span class="eb" data-de="verschiedene Branchen">different industries</span><h2 data-deh="Verschiedene Branchen.&lt;br&gt;&lt;b&gt;Dasselbe Problem.&lt;/b&gt;">Different industries.<br><b>Same problem.</b></h2>
         <p data-deh="Wie du &lt;b&gt;DICH, dein Unternehmen, dein Angebot oder deine exklusive Mitgliedschaft&lt;/b&gt; positionierst und vermarktest.&lt;span class=&quot;p2&quot;&gt; Anders gesagt: wie du deine Wunschkunden gewinnst, begeisterst und hältst.&lt;/span&gt;">How to position and market <b>YOU, your business, your offer, or exclusive membership.</b><span class="p2"> In other words, how to hook, engage and keep your ideal customers.</span></p>
         <div class="flow"><div class="subj"><span class="lbl2" data-de="für">for</span> <span class="sw" id="subj">you</span></div><div class="rail"><i id="flowDot"></i><b style="left:0"><span data-de="gewinnen">hook</span><small>get noticed.</small></b><b style="left:50%"><span data-de="begeistern">engage</span><small>get loved.</small></b><b style="left:100%"><span data-de="halten">keep</span><small>stay loved.</small></b></div></div></div>
-      <div class="g c ind fz" data-at="0.795" style="--l:14%;--t:38%"><div class="sc"><div class="ends"><span data-de="€3K-Monate">€3K months</span><span data-de="€10M-Monate">€10M months</span></div><div class="bar"><i id="scaleDot"></i></div></div>
+      <div class="g c ind fz" data-at="0.795" style="--l:14%;--t:38%"><p class="pm" data-deh="Wie du &lt;b&gt;DICH, dein Unternehmen, dein Angebot oder deine exklusive Mitgliedschaft&lt;/b&gt; positionierst und vermarktest.&lt;span class=&quot;p2&quot;&gt; Anders gesagt: wie du deine Wunschkunden gewinnst, begeisterst und hältst.&lt;/span&gt;">How to position and market <b>YOU, your business, your offer, or exclusive membership.</b><span class="p2"> In other words, how to hook, engage and keep your ideal customers.</span></p><div class="sc"><div class="ends"><span data-de="€3K-Monate">€3K months</span><span data-de="€10M-Monate">€10M months</span></div><div class="bar"><i id="scaleDot"></i></div></div>
         <div><span class="tt" data-de="Branchen">industries</span><div class="tags" id="tags"><span data-de="Beauty + Wellness">beauty + wellness</span><span data-de="Mitgliedschaften">memberships</span><span data-de="Lotterien">lotteries</span><span data-de="Tech-Start-ups">tech start-ups</span><span data-de="Markteintritt DACH">DACH market entry</span><span data-de="Online-Entertainment">online entertainment</span><span data-de="Wettbörse">betting exchange</span><span data-de="VIP + vermögende Kunden">VIP + high net worth</span><span data-de="D2C-Abos">D2C subscription</span></div></div></div></div>
     </div>
 
@@ -531,7 +535,7 @@ function drawSeq(t){let i=Math.min(NF-1,Math.max(0,Math.round(t*FPS)));if(!SEQ[i
 if(phone)loadSeq();
 
 /* scale */
-let VH=0,LVH=0,LVW=0,SH=0;const lvp=$('lvp');function fit(){const vw=stage.clientWidth,vh=VH=stage.clientHeight;if(vw!==LVW){LVW=vw;LVH=0;SH=Math.max(screen.width,screen.height)}LVH=Math.max(LVH,lvp.offsetHeight||0,vh);const ah=phone?SH:vh;let s=ah/H;let y;if(phone){s=Math.max((vw*0.875)/610,(SH*0.76)/H);y=SH*0.24;scrolly.style.height=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--n'))*SH)+'px';if(cv.width!==960){cv.width=960;cv.height=540;ctx.setTransform(.5,0,0,.5,0,0)}}else{scrolly.style.height='';if(s>1)s=Math.min(1.3,(vh*0.94)/H);y=vh-H*s;if(cv.width!==1920){cv.width=1920;cv.height=1080;ctx.setTransform(1,0,0,1,0,0)}}frame.style.transform=`translate(${(vw-W*s)/2}px,${y}px) translateY(var(--dy,0px)) scale(${s})`;$('edge').style.backgroundSize=`${W*2*s}px 100%`;$('edge').style.width=`${W*2*s}px`}
+let VH=0,LVH=0,LVW=0,SH=0,H0=0,LOGT=0;const lvp=$('lvp');function fit(){const vw=stage.clientWidth,vh=VH=stage.clientHeight;if(vw!==LVW){LVW=vw;LVH=0;SH=Math.max(screen.width,screen.height)}LVH=Math.max(LVH,lvp.offsetHeight||0,vh);if(vw!==fit.w){fit.w=vw;H0=vh}const ah=phone?H0:vh;let s=ah/H;let y;if(phone){s=Math.min(vw*0.9/610,Math.max(vw*0.68/610,(0.5*H0-196)/381));y=0.5*H0-444*s;scrolly.style.height=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--n'))*H0)+'px';LOGT=(document.querySelector('.ch3 .logos')||{}).offsetTop||(vh-80);if(cv.width!==960){cv.width=960;cv.height=540;ctx.setTransform(.5,0,0,.5,0,0)}}else{scrolly.style.height='';if(s>1)s=Math.min(1.3,(vh*0.94)/H);y=vh-H*s;if(cv.width!==1920){cv.width=1920;cv.height=1080;ctx.setTransform(1,0,0,1,0,0)}}frame.style.transform=`translate(${(vw-W*s)/2}px,${y}px) translateY(var(--dy,0px)) scale(${s})`;$('edge').style.backgroundSize=`${W*2*s}px 100%`;$('edge').style.width=`${W*2*s}px`}
 addEventListener('resize',fit);fit();
 mqPhone.addEventListener('change',e=>{phone=e.matches;applyTimings();lastPhase=-1;lastIdx=-1;if(phone)loadSeq();else loadFilm();fit()});
 
@@ -542,7 +546,7 @@ function timeAt(p){for(let i=1;i<MAP.length;i++){if(p<=MAP[i][0]){const [a,ta]=M
 const WA=.535,WB=.735,WC=.04,WL=1-(WB-WA-WC);
 const warp=r=>{const q=r*WL;return q<WA?q:q<WA+WC?WA+(q-WA)*(WB-WA)/WC:q+(WB-WA-WC)};
 const unwarp=p=>(p<WA?p:p<WB?WA+(p-WA)*WC/(WB-WA):p-(WB-WA-WC))/WL;
-const runH=()=>phone?(SH||innerHeight):innerHeight;
+const runH=()=>phone?(H0||innerHeight):innerHeight;
 function progress(){const r=scrolly.getBoundingClientRect(),run=r.height-runH();if(!(run>0))return 0;return warp(Math.min(1,Math.max(0,-r.top/run)))}
 
 /* particles (approved prototype) */
@@ -573,7 +577,7 @@ function orbitCard(g,p,v){
   if(g.__oi===undefined)g.__oi=[...g.parentNode.querySelectorAll('.c.st')].indexOf(g);
   const phi=Math.min(1,Math.max(0,(p-ORB.a0)/ORB.span))*ORB.turn,deg=ORB.lead+g.__oi*ORB.gap-phi,th=deg*Math.PI/180,c=Math.cos(th),sn=Math.sin(th);
   const aa=Math.abs(deg);/* no wrap: one pass per card, hidden before it enters and after it has gone behind her */
-  const d=Math.pow((1+c)/2,1.4),rx=stage.clientWidth*.40,cy=VH-202,x=rx*sn,y=cy+ORB.ry*c,sc=.5+.5*d;
+  const d=Math.pow((1+c)/2,1.4),rx=stage.clientWidth*.40,cy=(LOGT||VH-80)-14-88-ORB.ry+(VH-H0),x=rx*sn,y=cy+ORB.ry*c,sc=.5+.5*d;
   const o=Math.min(1,Math.max(0,(120-aa)/50))*v,os=o.toFixed(3);
   if(g.__o!==os){g.__o=os;g.style.opacity=os;g.style.visibility=o<.004?'hidden':''}
   const ts=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${sc.toFixed(4)})`;if(g.__t!==ts){g.__t=ts;g.style.transform=ts}
