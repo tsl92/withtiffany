@@ -85,6 +85,8 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 
 /* stage */
 .scrolly{position:relative;height:calc(var(--n) * 100vh);height:calc(var(--n) * 100dvh)}
+@media (max-width:700px){.scrolly{height:calc(var(--n) * 100vh)}}
+#lvp{position:fixed;top:0;left:0;width:0;height:100vh;pointer-events:none;visibility:hidden}
 .stage{position:sticky;top:0;height:100vh;height:100dvh;overflow:hidden;background:linear-gradient(var(--backdrop-hi),var(--backdrop))}
 .frame{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;transition:filter .7s var(--ease),opacity .7s var(--ease)}
 .edge{position:absolute;left:50%;bottom:0;height:60vh;transform:translateX(-50%);background:url(a/edge_wide.png) repeat-y center top;display:none}
@@ -110,6 +112,8 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .c b{font-family:var(--fh);font-stretch:125%;font-weight:600;display:block}
 .tag{position:absolute;right:3%;top:calc(80px + env(safe-area-inset-top,0px));font-family:var(--fu);font-size:11px;letter-spacing:.26em;text-transform:uppercase;opacity:0;transition:opacity .6s;color:var(--ink)}
 .ch.on .tag{opacity:.6}
+.tag.side{top:50%;bottom:auto;letter-spacing:.34em;text-shadow:0 0 8px rgba(214,220,222,.95),0 0 18px rgba(214,220,222,.8)}.tag.side.hu{left:auto;right:calc(50% + 17vw)}.tag.side.mc{right:auto;left:calc(50% + 17vw)}.ch.on .tag.side{opacity:.78}
+.ch3 .tag.side{top:31%}
 .bare{background:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}.bare::after{display:none}
 
 /* hero */
@@ -119,7 +123,7 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .hero .ln{display:block}
 .fore{font-family:var(--fh);font-stretch:125%;font-weight:300;font-size:clamp(14px,1.2vw,19px);color:var(--ink);padding:0 4px;white-space:nowrap;text-align:right;max-width:none}
 .fore b{display:inline;font-weight:600}
-.speed{font-family:var(--fb);font-weight:400;font-size:clamp(14px,1.15vw,19px);color:var(--graphite);padding:0;max-width:none;white-space:nowrap;--s:.6;--dx:0px}
+.speed{font-family:var(--fu);font-weight:500;font-size:clamp(11px,.85vw,13px);letter-spacing:.32em;color:var(--ink);padding:4px 8px;max-width:none;white-space:nowrap;--s:1;--dx:0px}
 .tagline{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(17% + env(safe-area-inset-bottom,0px));padding:10px 22px;font-family:var(--fh);font-stretch:125%;font-weight:300;font-size:clamp(16px,1.35vw,22px);letter-spacing:-.005em;color:var(--ink);opacity:0;transition:opacity .9s var(--ease);z-index:6;pointer-events:none;white-space:nowrap;isolation:isolate}
 .tagline::before{inset:0 4px;border-radius:14px}
 .tagline.on{opacity:.85}
@@ -220,6 +224,7 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .or{display:flex;align-items:center;gap:14px;width:min(420px,100%);font-family:var(--fu);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--dim)}
 .or i{flex:1;height:1px;background:rgba(13,13,14,.18)}
 .altbox{border-radius:16px;padding:12px 14px 11px 22px;display:grid;grid-template-columns:auto auto;align-items:center;column-gap:18px;row-gap:2px;text-align:left}
+.line i{font-style:normal;font-weight:300;opacity:.45;margin:0 6px}
 .alt .mail{display:contents}
 .alt .mail span{grid-column:1;grid-row:1;font-family:var(--fb);font-weight:500;font-size:15px;letter-spacing:.01em;user-select:all}
 .alt .mail .cpy{grid-column:2;grid-row:1/3;align-self:center}
@@ -234,7 +239,8 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
   .askc.open form.idea{grid-column:2;grid-row:3}
   .askc.open .alt{grid-column:2;grid-row:4;margin-top:-10px}
   .askc.open .intro .ip{font-size:13px;line-height:1.65}
-  .askc.open .intro .side{margin-top:auto;gap:10px}
+  .askc.open .intro .side{order:0;margin-top:0;gap:10px}
+  .askc.open .intro .ip{order:1;margin-top:auto}
   .askc.open .intro .sl{letter-spacing:.15em;white-space:nowrap;font-size:9.5px}
 }
 form.idea{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;max-height:0;opacity:0;overflow:hidden;transition:max-height .9s var(--ease),opacity .7s var(--ease);pointer-events:none}
@@ -282,12 +288,15 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   /* every chapter card sits in the chest zone, full width, glass kept */
   .ch2 .c,.ch3 .c,.ch5 .c,.ch4 .c.case{left:16px!important;right:16px!important;top:auto!important;bottom:calc(32px + env(safe-area-inset-bottom,0px))!important;--dx:0px;--dy:30px;--s:1;padding:18px 20px 16px;text-align:left}
   .ch .tag{top:calc(84px + env(safe-area-inset-top,0px));bottom:auto;right:16px}
-  .ch1 .tag{top:auto!important;bottom:calc(196px + env(safe-area-inset-bottom,0px))!important;right:auto!important;left:16px!important}.ch1 .tag:not(.hu){left:auto!important;right:16px!important}
+  .ch1 .tag{top:auto!important;bottom:calc(250px + env(safe-area-inset-bottom,0px))!important;right:auto!important;left:16px!important}.ch1 .tag:not(.hu){left:auto!important;right:16px!important}
   /* hero: one box on the chest, noticed → loved → stay loved, the founders line above it */
   .ch1 .c.hero{left:50%!important;right:auto!important;top:auto!important;bottom:calc(104px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%) translate3d(0,var(--dy),0);font-size:clamp(24px,7.4vw,32px);padding:12px 20px;text-align:center;white-space:nowrap}
   .ch1 .c.hero.on{transform:translateX(-50%)}
   .ch1 .c.fore{left:50%!important;right:auto!important;top:auto!important;bottom:calc(56px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%);font-size:14px;text-align:center;white-space:nowrap}
-  #heroR{display:none}
+  #heroR,#speed{display:none}
+  .ch2 .tag.side,.ch3 .tag.side{top:auto;bottom:calc(304px + env(safe-area-inset-bottom,0px));left:16px;right:auto}
+  .ch2 .tag.side{bottom:calc(262px + env(safe-area-inset-bottom,0px))}
+  .ch1 .c.fore.sp{font-family:var(--fu);font-weight:500;font-size:11px;letter-spacing:.32em}
   /* words */
   .ch2 .c.q{font-size:15px;line-height:1.5}
   /* numbers: headline as a glass box too, stats one at a time, logos in a row above */
@@ -296,14 +305,18 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .ch3 .c.head.fz::before{inset:4px 6px;backdrop-filter:blur(20px) brightness(1.12) saturate(1.05);-webkit-backdrop-filter:blur(20px) brightness(1.12) saturate(1.05);background:rgba(255,255,255,.26)}
   .ch1 .c.fore{padding:7px 14px}
   .ch1 .c.fore.fz::before{inset:0;border-radius:12px;backdrop-filter:blur(14px) brightness(1.1);-webkit-backdrop-filter:blur(14px) brightness(1.1);background:rgba(255,255,255,.2)}
-  .ch3 .c.st{text-align:center;padding:20px 22px 18px}
-  .ch3 .st .n{font-size:40px;margin-bottom:6px}.ch3 .st span{font-size:13px}
-  .ch3 .c.head,.ch3 .c.st{bottom:calc(132px + env(safe-area-inset-bottom,0px))!important}
+  .ch3 .c.st{text-align:center;padding:8px 8px 7px;height:68px;display:flex;flex-direction:column;justify-content:center;--dy:18px;--s:.96;right:calc(50% + 4px)!important}
+  .ch3 .st .n{font-size:clamp(21px,6.4vw,26px);margin-bottom:3px}.ch3 .st span{font-size:9.5px;line-height:1.2;display:block}
+  .ch3 .c.st:nth-child(5),.ch3 .c.st:nth-child(7){left:calc(50% + 4px)!important;right:16px!important}
+  .ch3 .c.st:nth-child(4),.ch3 .c.st:nth-child(5){bottom:calc(180px + env(safe-area-inset-bottom,0px))!important}
+  .ch3 .c.st:nth-child(6),.ch3 .c.st:nth-child(7){bottom:calc(106px + env(safe-area-inset-bottom,0px))!important}
+  .ch3 .c.st.fz::before{inset:3px 4px;border-radius:14px;background:rgba(255,255,255,.38);backdrop-filter:blur(16px) brightness(1.1);-webkit-backdrop-filter:blur(16px) brightness(1.1);-webkit-mask-image:none;mask-image:none}
+  .ch3 .c.head{bottom:calc(132px + env(safe-area-inset-bottom,0px))!important}
   .ch3 .c.head{top:calc(122px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
-  .logos{left:16px;right:16px;width:auto;transform:none;bottom:calc(28px + env(safe-area-inset-bottom,0px));padding:10px 14px 8px;gap:8px;align-items:flex-start}
+  .logos{left:16px;right:16px;width:auto;transform:none;bottom:calc(28px + env(safe-area-inset-bottom,0px));padding:9px 14px 6px;gap:5px;align-items:flex-start}
   .logos::before{inset:0;border-radius:16px;-webkit-mask-image:none;mask-image:none;background:rgba(255,255,255,.16);backdrop-filter:blur(14px) brightness(1.06);-webkit-backdrop-filter:blur(14px) brightness(1.06)}
-  .logos .cap{white-space:normal;font-size:9px;line-height:1.5;opacity:.6}
-  .logos .band{height:30px;-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}
+  .logos .cap{white-space:normal;font-size:8px;letter-spacing:.2em;line-height:1.4;opacity:.6}
+  .logos .band{height:26px;-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}
   .logos img{height:15px}.logos img.sp{height:11px}
   /* work: swipe carousel over the dimmed film, the SPARITUAL glass box in the zone */
   .frame.dim{opacity:.35}
@@ -322,12 +335,13 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .col{position:static;display:contents}
   .ch5 .c.range,.ch5 .c.ind{position:absolute!important;width:auto;display:block}
   .ch5 .c.fz::before{inset:4px;border-radius:16px;backdrop-filter:blur(18px) brightness(1.1) saturate(1.05);-webkit-backdrop-filter:blur(18px) brightness(1.1) saturate(1.05);background:rgba(255,255,255,.24);-webkit-mask-image:radial-gradient(ellipse 85% 90% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 85% 90% at 50% 50%,#000 60%,transparent 100%)}
-  .ch5 .c.range{padding:18px 20px 30px}
+  .ch5 .c.range{padding:14px 18px 10px;top:calc(92px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
+  .ch5 .c.ind{--dy:24px}
   .ch5 .c.g{backdrop-filter:blur(6px) saturate(1.3) brightness(1.08);-webkit-backdrop-filter:blur(6px) saturate(1.3) brightness(1.08)}
-  .ch5 .c.range p{margin:0 -10px;padding:8px 10px;border-radius:12px;background:radial-gradient(ellipse 80% 90% at 50% 50%,rgba(238,241,242,.62) 55%,rgba(238,241,242,0) 100%)}.ch5 .c.range .flow .rail{margin-bottom:40px}.ch5 .c.range p{font-size:12.5px;line-height:1.45}
+  .ch5 .c.range p{margin:0 -10px;padding:8px 10px;border-radius:12px;background:radial-gradient(ellipse 80% 90% at 50% 50%,rgba(238,241,242,.62) 55%,rgba(238,241,242,0) 100%)}.ch5 .c.range .flow .rail{margin-bottom:34px}.ch5 .c.range p{font-size:12px;line-height:1.42}
   .flow .subj{display:block}
-  .range h2{font-size:22px;margin-bottom:10px}.range .eb{display:none}.range p{font-size:13px;max-width:none}.flow{margin-top:10px;padding-top:10px}.flow .subj{margin-bottom:10px}.flow .rail{margin-bottom:30px}
-  .ind .sc{margin-bottom:18px}.ind .tags{gap:5px}.ind .tags span{font-size:10px;padding:5px 9px}
+  .range h2{font-size:20px;margin-bottom:8px}.range .eb{display:none}.range p{font-size:12px;max-width:none}.flow{margin-top:8px;padding-top:8px}.flow .subj{display:none}.flow .rail{margin-bottom:34px}
+  .ind .sc{margin-bottom:14px}.ind .tags{gap:5px}.ind .tags span{font-size:10px;padding:5px 9px}.ind .tt{margin-bottom:7px}.ch5 .c.ind{padding:14px 18px 14px}
   /* the ask */
   .askc{width:calc(100% - 32px)}
   .askc.open{top:auto;bottom:calc(30px + env(safe-area-inset-bottom,0px));transform:translateX(-50%)!important;gap:12px}
@@ -336,6 +350,7 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .altbox{padding:10px 16px 9px;width:100%;box-sizing:border-box}
   .alt .mail{font-size:13px}
   .askc.open .line{font-size:15px;padding:10px 16px;white-space:normal}
+  .line i{margin:0 2px}
   form.idea{grid-template-columns:1fr}.fld.full{grid-column:auto}.frow{grid-column:auto}.msg{grid-column:auto}
   .fld input,.fld textarea{padding:11px 16px;font-size:14px}
   .line{white-space:normal}
@@ -360,6 +375,7 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
 <path fill="currentColor" d="M3730 799.5H3846V1534.5L3335 1029.5V1499.5H3219V764.5L3730 1269.5ZM2784.7 1319.5H2526.7L2447 1499.5H2314L2656 760.5L2999 1499.5H2865L2784.7 1319.5ZM1137 799.5H1523V905.5H1253V1080.5H1513V1183.5H1253V1499.5H1137ZM1798 799.5H2184V905.5H1914V1080.5H2174V1183.5H1914V1499.5H1798ZM4527 799.5H4662L4425 1204.5V1499.5H4305V1205.5L4067 799.5H4202L4364 1098.5ZM8 908.5V799.5H496V908.5H311V1499.5H193V908.5ZM722 799.5H842V1499.5H722ZM2656 997.5 2561 1219.5H2751.6Z"/>
 <path fill="currentColor" d="M2784.7 1804.5 2865 1624.5H2999L2847 1952H2731.2L2751.6 1904.5H2561L2581.3 1952H2465.6L2314 1624.5H2447L2526.7 1804.5ZM3846 1612V1952H3730V1854.5L3631.3 1952H3479.2L3823.2 1612H3846ZM2174 1952H1798V1624.5H1914V1940.5H2174V1952ZM1513 1952H1137V1624.5H1253V1940.5H1513V1952ZM4444 1952H4285.4L4305 1918.5V1624.5H4425V1919.5L4444 1952ZM842 1952H722V1624.5H842V1952ZM311 1952H193V1624.5H311V1952ZM3219 1952V1624.5H3335V1952H3219Z"/>
 </symbol></defs></svg>
+<div id="lvp" aria-hidden="true"></div>
 <div class="pre" id="pre" aria-hidden="true"><div class="in"><svg class="logo" viewBox="8.0 -23.4 4654.0 1975.4"><use href="#logo"/></svg><div class="bar"><i id="preBar"></i></div></div></div>
 
 <nav class="nav" aria-label="site">
@@ -388,28 +404,29 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
     
     <!-- 01 hero -->
     <div class="ch ch1 on" id="ch1">
-      <span class="tag hu" style="left:auto;right:calc(50% + 17vw);top:auto;bottom:30%" data-de="Mensch">human</span><span class="tag" style="right:auto;left:calc(50% + 17vw);top:auto;bottom:30%" data-de="Maschine">machine</span>
+      <span class="tag hu side" data-de="Mensch">human</span><span class="tag mc side" data-de="Maschine">machine</span>
       <div class="c bare fore fz" data-at="0" style="--r:calc(50% + 16vw);--t:calc(31% - 36px);--dx:-20px" data-deh="für Gründer mit &lt;b&gt;großen Ideen.&lt;/b&gt;">for founders with <b>big ideas.</b></div>
       <div class="g c hero fz" id="heroL" data-at="0" style="--r:calc(50% + 16vw);--t:31%;--dx:-20px"><span class="ln">get <b class="w" id="w1">noticed.</b></span></div>
-      <div class="g c hero r" id="heroR" data-at="0.1" style="--l:calc(50% + 13vw);--t:31%;--dx:20px"><b>stay loved.</b></div>
+      <div class="g c hero r" id="heroR" data-at="0.09" style="--l:calc(50% + 13vw);--t:31%;--dx:20px"><b>stay loved.</b></div>
+      <div class="c bare speed fz" id="speed" data-at="0.118" style="--l:calc(50% + 13vw + 6px);--t:calc(31% + 96px);--dy:10px">→ AT AI SPEED</div>
       <div class="g c hint" id="hint"><i></i><span data-de="scrollen">scroll</span></div>
     </div>
 
     <!-- 02 in their words -->
     <div class="ch ch2 insheet" id="ch2">
-      <span class="tag" data-de="was andere sagen">what others say</span>
+      <span class="tag" data-de="was andere sagen">what others say</span><span class="tag hu side" data-de="Mensch">human</span>
       <div class="g c q fz" data-at="0.18" data-slot="q" style="--l:12%;--b:24%"><span class="star">★★★★★</span><span data-de="„Ein unglaubliches Talent, komplexe Herausforderungen greifbar zu machen.“">"An incredible ability to take complex challenges and simplify them."</span><span class="by" data-de="General Manager, ehemals Nike">a general manager, ex-Nike</span></div>
       <div class="g c q fz" data-at="0.245" data-slot="q" style="--r:12%;--b:26%"><span class="star">★★★★★</span><span data-de="„Die seltene Mischung aus Querdenken und klarer Struktur: sieht das große Ganze und bleibt dabei fokussiert.“">"A rare balance of lateral and vertical thinking: connects the dots while staying focused."</span><span class="by" data-de="Business Portfolio Manager">a business portfolio manager</span></div>
     </div>
 
     <!-- 03 numbers + logos -->
     <div class="ch ch3 insheet" id="ch3">
-      <span class="tag" data-de="in Zahlen">in numbers</span>
+      <span class="tag" data-de="in Zahlen">in numbers</span><span class="tag hu side" data-de="Mensch">human</span>
       <div class="c head bare fz" id="head12" data-at="0.34" style="--l:10%;--t:40%;--dx:-18px" data-deh="Zwölf Jahre in einer der &lt;b&gt;schnelllebigsten&lt;/b&gt; Branchen überhaupt.">Twelve years in one of the <b>fastest-paced</b> industries there is.</div>
-      <div class="g c st fz" data-at="0.355" data-slot="A" style="--r:21%;--t:8%;--dx:22px"><span class="n">€10M+</span><span data-de="Monate, mit vermögenden Privatkunden">months, high-net-worth verticals</span></div>
-      <div class="g c st fz" data-at="0.385" data-slot="A" style="--r:7%;--t:27%;--dx:22px"><span class="n">€1M+</span><span data-de="in einem einzigen Monat, für eine Marke">in a single month, one brand</span></div>
-      <div class="g c st fz" data-at="0.415" data-slot="A" style="--r:5%;--t:49%;--dx:22px"><span class="n">£400K+</span><span data-de="in drei Monaten eingespart">saved in three months</span></div>
-      <div class="g c st fz" data-at="0.445" data-slot="A" style="--r:17%;--t:69%;--dx:22px"><span class="n">+28 %</span><span data-de="gegenüber dem Vorjahr">year on year</span></div>
+      <div class="g c st fz" data-at="0.355" style="--r:21%;--t:8%;--dx:22px"><span class="n">€10M+</span><span data-de="Monate, mit vermögenden Privatkunden">months, high-net-worth verticals</span></div>
+      <div class="g c st fz" data-at="0.385" style="--r:7%;--t:27%;--dx:22px"><span class="n">€1M+</span><span data-de="in einem einzigen Monat, für eine Marke">in a single month, one brand</span></div>
+      <div class="g c st fz" data-at="0.415" style="--r:5%;--t:49%;--dx:22px"><span class="n">£400K+</span><span data-de="in drei Monaten eingespart">saved in three months</span></div>
+      <div class="g c st fz" data-at="0.445" style="--r:17%;--t:69%;--dx:22px"><span class="n">+28 %</span><span data-de="gegenüber dem Vorjahr">year on year</span></div>
       <div class="logos" aria-label="brands she worked with or for" data-de-aria="Marken, mit oder für die sie gearbeitet hat">
         <span class="cap" data-de="ein paar Marken, die du vielleicht kennst · + ein paar, die ich nicht nennen darf. NDAs eben.">some brands you might know · + a few I can't name, NDAs and all</span>
         <div class="band"><div class="track">
@@ -425,17 +442,17 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
     <!-- 05 range -->
     <div class="ch ch5 insheet" id="ch5">
       <span class="tag" data-de="Bandbreite">range</span>
-      <div class="col"><div class="g c range fz" data-at="0.77" data-slot="r" style="--l:14%;--t:28%"><span class="eb" data-de="verschiedene Branchen">different industries</span><h2 data-deh="Verschiedene Branchen.&lt;br&gt;&lt;b&gt;Dasselbe Problem.&lt;/b&gt;">Different industries.<br><b>Same problem.</b></h2>
+      <div class="col"><div class="g c range fz" data-at="0.77" style="--l:14%;--t:28%"><span class="eb" data-de="verschiedene Branchen">different industries</span><h2 data-deh="Verschiedene Branchen.&lt;br&gt;&lt;b&gt;Dasselbe Problem.&lt;/b&gt;">Different industries.<br><b>Same problem.</b></h2>
         <p data-deh="Wie du &lt;b&gt;DICH, dein Unternehmen, dein Angebot oder deine exklusive Mitgliedschaft&lt;/b&gt; positionierst und vermarktest.&lt;span class=&quot;p2&quot;&gt; Anders gesagt: wie du deine Wunschkunden gewinnst, begeisterst und hältst.&lt;/span&gt;">How to position and market <b>YOU, your business, your offer, or exclusive membership.</b><span class="p2"> In other words, how to hook, engage and keep your ideal customers.</span></p>
         <div class="flow"><div class="subj"><span class="lbl2" data-de="für">for</span> <span class="sw" id="subj">you</span></div><div class="rail"><i id="flowDot"></i><b style="left:0"><span data-de="gewinnen">hook</span><small>get noticed.</small></b><b style="left:50%"><span data-de="begeistern">engage</span><small>get loved.</small></b><b style="left:100%"><span data-de="halten">keep</span><small>stay loved.</small></b></div></div></div>
-      <div class="g c ind fz" data-at="0.795" data-slot="r" style="--l:14%;--t:38%"><div class="sc"><div class="ends"><span data-de="€3K-Monate">€3K months</span><span data-de="€10M-Monate">€10M months</span></div><div class="bar"><i id="scaleDot"></i></div></div>
+      <div class="g c ind fz" data-at="0.795" style="--l:14%;--t:38%"><div class="sc"><div class="ends"><span data-de="€3K-Monate">€3K months</span><span data-de="€10M-Monate">€10M months</span></div><div class="bar"><i id="scaleDot"></i></div></div>
         <div><span class="tt" data-de="Branchen">industries</span><div class="tags" id="tags"><span data-de="Beauty + Wellness">beauty + wellness</span><span data-de="Mitgliedschaften">memberships</span><span data-de="Lotterien">lotteries</span><span data-de="Tech-Start-ups">tech start-ups</span><span data-de="Markteintritt DACH">DACH market entry</span><span data-de="Online-Entertainment">online entertainment</span><span data-de="Wettbörse">betting exchange</span><span data-de="VIP + vermögende Kunden">VIP + high net worth</span><span data-de="D2C-Abos">D2C subscription</span></div></div></div></div>
     </div>
 
     <!-- 06 the ask -->
     <div class="ch ch6" id="ch6">
       <div class="c askc" id="askc" data-at="0.915">
-        <h2 class="g line" data-deh="erzähl uns von deiner Idee, die &lt;b&gt;gesehen werden muss.&lt;/b&gt;">tell us your idea that needs to <b>get noticed.</b></h2>
+        <h2 class="g line" data-deh="erzähl uns von &lt;b&gt;dir&lt;/b&gt; &lt;i&gt;|&lt;/i&gt; &lt;b&gt;deiner Idee&lt;/b&gt;">tell us about <b>you</b> <i>|</i> <b>your idea</b></h2>
         <button class="g plusbtn" id="plusbtn" type="button" aria-expanded="false" aria-controls="ideaForm" aria-label="open the form"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg></button>
                 <div class="g intro" id="intro">
           <p class="ip" data-de="Ich arbeite pro Jahr nur mit wenigen Unternehmen. Wenn du hier bist, wurdest du also wahrscheinlich empfohlen. Erzähl mir einfach, wer du bist. Wenn es passt, melde ich mich.">I take on only a small number of businesses each year, so if you're here you've probably been referred. Simply tell me who you are, and I'll be in touch if it's a fit.</p>
@@ -468,7 +485,7 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
 <footer class="bleed">
   <p class="big">get noticed. get loved. <b>stay loved.</b><span class="me" data-de="mit mir.">with me.</span></p>
   <svg class="logo" viewBox="8.0 -23.4 4654.0 1975.4" aria-label="with Tiffany"><use href="#logo"/></svg>
-  <div class="meta"><span>© 2026 Tiffany Santisteban Lagos</span><span data-de="Nürnberg · London">Nuremberg · London</span><a href="https://www.linkedin.com/in/tiffanyslagos" target="_blank" rel="noopener">LinkedIn</a><a href="legal.html">legal notice · privacy</a></div>
+  <div class="meta"><span>© 2026 Tiffany Santisteban Lagos</span><span data-de="Nürnberg · London">Nuremberg · London</span><a href="https://www.linkedin.com/in/tiffanyslagos" target="_blank" rel="noopener">LinkedIn</a><a href="legal.html">privacy · legal notice</a></div>
   <small data-de="Markennamen und Logos gehören ihren Inhabern und zeigen frühere Arbeitgeber und Kunden.">Brand names and logos belong to their owners and show past employers and clients.</small>
 </footer>
 
@@ -506,12 +523,12 @@ setTimeout(done,7000);if(!phone)film.load();
 /* phone: Apple-style frame sequence (iOS will not repaint a scrubbed paused video) */
 const NF=303,FPS=12,SEQ=[],seq=$('seq'),sq=seq.getContext('2d');let seqStarted=false,seqLoaded=0,lastIdx=-1;
 function loadSeq(){if(seqStarted)return;seqStarted=true;const order=[],seen=new Set();for(const st of [8,4,2,1])for(let i=0;i<NF;i+=st)if(!seen.has(i)){seen.add(i);order.push(i)}
-  let k=0;const next=()=>{if(k>=order.length)return;const i=order[k++],im=new Image();im.decoding='async';im.onload=()=>{SEQ[i]=im;seqLoaded++;preBar.style.setProperty('--w',(4+96*Math.min(1,seqLoaded/Math.ceil(NF/4)))+'%');if(seqLoaded>=Math.ceil(NF/4))done();if(lastIdx<0)lastIdx=-2;next()};im.onerror=next;im.src='a/f/'+String(i+1).padStart(4,'0')+'.webp'};for(let c=0;c<6;c++)next()}
+  let k=0;const next=()=>{if(k>=order.length)return;const i=order[k++],im=new Image();im.decoding='async';im.onload=()=>{const got=()=>{seqLoaded++;preBar.style.setProperty('--w',(4+96*Math.min(1,seqLoaded/Math.ceil(NF/4)))+'%');if(seqLoaded>=Math.ceil(NF/4))done();if(lastIdx<0)lastIdx=-2;next()};if(window.createImageBitmap)createImageBitmap(im).then(bm=>{SEQ[i]=bm;got()},()=>{SEQ[i]=im;got()});else{SEQ[i]=im;got()}};im.onerror=next;im.src='a/f/'+String(i+1).padStart(4,'0')+'.webp'};for(let c=0;c<6;c++)next()}
 function drawSeq(t){let i=Math.min(NF-1,Math.max(0,Math.round(t*FPS)));if(!SEQ[i]){for(let d=1;d<NF;d++){if(SEQ[i-d]){i-=d;break}if(SEQ[i+d]){i+=d;break}}}if(!SEQ[i]||i===lastIdx)return;lastIdx=i;sq.drawImage(SEQ[i],0,0,560,720)}
 if(phone)loadSeq();
 
 /* scale */
-let VH=0;function fit(){const vw=stage.clientWidth,vh=VH=stage.clientHeight;let s=vh/H;let y;if(phone){s=Math.min(vh/H,(vw*0.8)/610);y=vh-H*s}else{if(s>1)s=Math.min(1.3,(vh*0.94)/H);y=vh-H*s}frame.style.transform=`translate(${(vw-W*s)/2}px,${y}px) translateY(var(--dy,0px)) scale(${s})`;$('edge').style.backgroundSize=`${W*2*s}px 100%`;$('edge').style.width=`${W*2*s}px`}
+let VH=0,LVH=0,LVW=0;const lvp=$('lvp');function fit(){const vw=stage.clientWidth,vh=VH=stage.clientHeight;if(vw!==LVW){LVW=vw;LVH=0}LVH=Math.max(LVH,lvp.offsetHeight||0,vh);const ah=phone?LVH:vh;let s=ah/H;let y;if(phone){s=Math.min(ah/H,(vw*0.8)/610);y=ah-H*s;if(cv.width!==960){cv.width=960;cv.height=540;ctx.setTransform(.5,0,0,.5,0,0)}}else{if(s>1)s=Math.min(1.3,(vh*0.94)/H);y=vh-H*s;if(cv.width!==1920){cv.width=1920;cv.height=1080;ctx.setTransform(1,0,0,1,0,0)}}frame.style.transform=`translate(${(vw-W*s)/2}px,${y}px) translateY(var(--dy,0px)) scale(${s})`;$('edge').style.backgroundSize=`${W*2*s}px 100%`;$('edge').style.width=`${W*2*s}px`}
 addEventListener('resize',fit);fit();
 mqPhone.addEventListener('change',e=>{phone=e.matches;applyTimings();lastPhase=-1;lastIdx=-1;if(phone)loadSeq();else loadFilm();fit()});
 
@@ -522,7 +539,8 @@ function timeAt(p){for(let i=1;i<MAP.length;i++){if(p<=MAP[i][0]){const [a,ta]=M
 const WA=.535,WB=.735,WC=.04,WL=1-(WB-WA-WC);
 const warp=r=>{const q=r*WL;return q<WA?q:q<WA+WC?WA+(q-WA)*(WB-WA)/WC:q+(WB-WA-WC)};
 const unwarp=p=>(p<WA?p:p<WB?WA+(p-WA)*WC/(WB-WA):p-(WB-WA-WC))/WL;
-function progress(){const r=scrolly.getBoundingClientRect(),run=r.height-innerHeight;if(!(run>0))return 0;return warp(Math.min(1,Math.max(0,-r.top/run)))}
+const runH=()=>phone?(LVH||innerHeight):innerHeight;
+function progress(){const r=scrolly.getBoundingClientRect(),run=r.height-runH();if(!(run>0))return 0;return warp(Math.min(1,Math.max(0,-r.top/run)))}
 
 /* particles (approved prototype) */
 let seed=21;const rnd=()=>{seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296};
@@ -542,42 +560,42 @@ const thread=$('thread');
 const CHAP=[['ch1',0,.13],['ch2',.17,.31],['ch3',.33,.53],['ch4',.57,.73],['ch5',.75,.87],['ch6',.91,1.2]];
 const sm=t=>{t=Math.min(1,Math.max(0,t));return t*t*(3-2*t)};
 const EASE=.028;let lastPhase=-1,lastCh='';
-function applyTimings(){CHAP[3][2]=.70;CHAP[0][2]=phone?.13:.15;document.querySelectorAll('.c[data-at]').forEach(el=>{if(!el.dataset.at0)el.dataset.at0=el.dataset.at;el.dataset.at=el.dataset.at0});if(phone){const AT={'ch3 .c.head':.335,'ch5 .c.range':.765,'ch5 .c.ind':.838};for(const [sel,v] of Object.entries(AT)){const el=document.querySelector('.'+sel);if(el)el.dataset.at=v}[...document.querySelectorAll('.ch3 .c.st')].forEach((el,i)=>el.dataset.at=(.375+i*.04).toFixed(3))}}
+function applyTimings(){CHAP[3][2]=.70;CHAP[0][2]=phone?.13:.168;document.querySelectorAll('.c[data-at]').forEach(el=>{if(!el.dataset.at0)el.dataset.at0=el.dataset.at;el.dataset.at=el.dataset.at0});if(phone){const AT={'ch3 .c.head':.335,'ch5 .c.range':.765,'ch5 .c.ind':.838};for(const [sel,v] of Object.entries(AT)){const el=document.querySelector('.'+sel);if(el)el.dataset.at=v}[...document.querySelectorAll('.ch3 .c.st')].forEach((el,i)=>el.dataset.at=(.36+i*.035).toFixed(3))}}
 applyTimings();
 function countUp(n){n.dataset.done=1}
 function chapters(p){
-  if(phone){const act=CHAP.find(([id,a,b])=>p>=a&&p<b),aid=act?act[0]:'';if(aid!==lastCh){lastCh=aid;if(aid&&!still){thread.classList.remove('pulse');void thread.offsetWidth;thread.classList.add('pulse')}}thread.style.height=`calc(${(p*100).toFixed(2)}% - ${(p*120).toFixed(0)}px)`}
+  if(phone){const act=CHAP.find(([id,a,b])=>p>=a&&p<b),aid=act?act[0]:'';if(aid!==lastCh){lastCh=aid;if(aid&&!still){thread.classList.remove('pulse');void thread.offsetWidth;thread.classList.add('pulse')}}}
   for(const [id,a,b] of CHAP){
     const el=$(id),v=Math.min(a===0?1:sm((p-a)/EASE),1-sm((p-b)/EASE)),on=v>0.02;
     el.classList.toggle('on',on);
-    const cards=[...el.querySelectorAll('.c')];
+    const cards=el.__cards||(el.__cards=[...el.querySelectorAll('.c')]);
     cards.forEach((g,i)=>{
       const at=+(g.dataset.at||a),slot=phone&&g.dataset.slot;let vi=Math.min(at===0?1:sm((p-at)/(slot?.014:EASE)),v);
       if(slot){const next=cards.slice(i+1).find(x=>x.dataset.slot===g.dataset.slot);if(next)vi=Math.min(vi,1-sm((p-(+next.dataset.at-0.018))/0.012))}
       if(id==='ch1'){if(g.id==='hint')vi=Math.min(vi,1-sm(p/0.02));if(phone&&g.id==='heroR')vi=0}
-      g.style.opacity=vi.toFixed(3);g.classList.toggle('on',vi>0.985);
+      const os=vi.toFixed(3);if(g.__o!==os){g.__o=os;g.style.opacity=os;g.style.visibility=vi<0.004?'hidden':'';g.classList.toggle('on',vi>0.985)}
       const base=g.classList.contains('askc')?'translate(-50%,-50%) ':(phone&&(g.classList.contains('hero')||g.classList.contains('speed')||g.classList.contains('fore')))||g.id==='hint'?'translateX(-50%) ':'';
-      if(vi<=0.985){const k=(1-vi).toFixed(3);g.style.transform=base+`translate3d(calc(var(--dx,0px)*${k}),calc(var(--dy,0px)*${k}),0) scale(calc(1 - (1 - var(--s,1))*${k}))`}
-      else g.style.transform=base||'none';
+      let ts;if(vi<=0.985){const k=(1-vi).toFixed(3);ts=base+`translate3d(calc(var(--dx,0px)*${k}),calc(var(--dy,0px)*${k}),0) scale(calc(1 - (1 - var(--s,1))*${k}))`}else ts=base||'none';
+      if(g.__t!==ts){g.__t=ts;g.style.transform=ts}
       if(g.classList.contains('st')&&vi>0.08)countUp(g.querySelector('.n'));
     });
     if(el.dataset.dim)frame.classList.toggle('dim',v>0.5);
     if(phone){if(id==='ch2')frame.__sh=0;if(['ch2','ch3','ch4','ch5'].includes(id))frame.__sh=Math.max(frame.__sh||0,v);if(id==='ch5')$('sheet').classList.toggle('on',frame.__sh>0.3)}
-    if(id==='ch5'){const k=sm((p-.80)/(b-.80));$('scaleDot').style.setProperty('--p',(100*k)+'%');[...$('tags').children].forEach((t,i,arr)=>t.classList.toggle('lit',k>(i+0.5)/arr.length));const k0=phone?.77:.775,k1=phone?.815:b,kk=sm((p-k0)/(k1-k0));$('flowDot').style.setProperty('--p',(100*kk)+'%');[...document.querySelectorAll('.flow .rail b')].forEach((n,i)=>n.classList.toggle('lit',kk>=i*0.5-0.02));const SUBJ=LANG==='de'?['dich','dein Unternehmen','dein Angebot','deine Mitgliedschaft']:['you','your business','your offer','your membership'],sw=$('subj'),want=SUBJ[Math.min(3,Math.floor(kk*4))];if(sw.textContent!==want){sw.animate([{opacity:1},{opacity:0},{opacity:1}],{duration:400});setTimeout(()=>sw.textContent=want,180)}}
+    if(id==='ch5'&&(on||el.__on5)){el.__on5=on;const k=sm((p-.80)/(b-.80));$('scaleDot').style.setProperty('--p',(100*k)+'%');(el.__tags||(el.__tags=[...$('tags').children])).forEach((t,i,arr)=>t.classList.toggle('lit',k>(i+0.5)/arr.length));const k0=phone?.77:.775,k1=phone?.815:b,kk=sm((p-k0)/(k1-k0));$('flowDot').style.setProperty('--p',(100*kk)+'%');(el.__rail||(el.__rail=[...document.querySelectorAll('.flow .rail b')])).forEach((n,i)=>n.classList.toggle('lit',kk>=i*0.5-0.02));const SUBJ=LANG==='de'?['dich','dein Unternehmen','dein Angebot','deine Mitgliedschaft']:['you','your business','your offer','your membership'],sw=$('subj'),want=SUBJ[Math.min(3,Math.floor(kk*4))];if(sw.textContent!==want){sw.animate([{opacity:1},{opacity:0},{opacity:1}],{duration:400});setTimeout(()=>sw.textContent=want,180)}}
   }
   /* hero word: noticed → loved (→ stay loved on phone) */
   const phase=p<0.03?0:p<0.075?1:2;
   if(phase!==lastPhase){lastPhase=phase;const w1=$('w1'),hl=$('heroL');
     const txt=phase===0?'noticed.':phase===1?'loved.':(phone?'stay loved.':'loved.');
     if(w1.textContent!==txt){w1.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-10px)'},{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:520,easing:'ease-in-out'});setTimeout(()=>{w1.textContent=txt;hl.querySelector('.ln').firstChild.textContent=(phone&&phase===2)?'':'get '},240)}
+    if(phone){const fo=document.querySelector('.ch1 .c.fore'),sp=phase===2;if(fo&&fo.classList.contains('sp')!==sp){fo.animate([{opacity:1},{opacity:0},{opacity:0},{opacity:1}],{duration:520,easing:'ease-in-out'});setTimeout(()=>{fo.classList.toggle('sp',sp);fo.innerHTML=sp?'→ AT AI SPEED':(LANG==='de'?'für Gründer mit <b>großen Ideen.</b>':'for founders with <b>big ideas.</b>')},240)}}
   }
   /* hand-over: film fades and lifts, bloom peaks, the + film materialises */
   const h=sm((p-.875)/.06);
-  filmwrap.style.opacity=(1-h).toFixed(3);filmwrap.style.transform=`scale(${1+h*0.04})`;
-  $('plusbg').style.opacity=h.toFixed(3);stage.style.setProperty('--endfade',h.toFixed(3));
+  const hs=h.toFixed(3);if(chapters.__h!==hs){chapters.__h=hs;filmwrap.style.opacity=(1-h).toFixed(3);filmwrap.style.transform=`scale(${1+h*0.04})`;$('plusbg').style.opacity=hs;stage.style.setProperty('--endfade',hs)}
   if(p<.86&&stage.classList.contains('form'))$('plusbtn').click();
-  const pv=$('plusv');pv.style.opacity=(sm((p-.885)/.05)*(stage.classList.contains('form')?.35:1)).toFixed(3);pv.style.transform=`scale(${1.12-0.12*sm((p-.885)/.08)})`;
-  const bl=Math.sin(Math.PI*sm((p-.87)/.07));$('bloom').style.opacity=(bl*0.9).toFixed(3);
+  const pv=$('plusv'),pvo=(sm((p-.885)/.05)*(stage.classList.contains('form')?.35:1)).toFixed(3),pvt=`scale(${(1.12-0.12*sm((p-.885)/.08)).toFixed(4)})`;if(chapters.__pv!==pvo+pvt){chapters.__pv=pvo+pvt;pv.style.opacity=pvo;pv.style.transform=pvt}
+  const bl=(Math.sin(Math.PI*sm((p-.87)/.07))*0.9).toFixed(3);if(chapters.__bl!==bl){chapters.__bl=bl;$('bloom').style.opacity=bl}
   if(h>0.3&&$('plus').paused)$('plus').play().catch(()=>{});if(h<0.05&&!$('plus').paused)$('plus').pause();
   /* ask line rotates with scroll */
 }
@@ -588,6 +606,30 @@ addEventListener('scroll',()=>{target=progress()},{passive:true});
 function prime(){if(primed)return;primed=true;const pr=film.play();if(pr&&pr.then)pr.then(()=>film.pause()).catch(()=>{})}
 ['pointerdown','touchstart','wheel','keydown'].forEach(e=>addEventListener(e,prime,{once:true,passive:true}));
 let homeFrost=false;
+/* phone renderer: the same field, drawn as ~16 batched fills instead of ~6800 (the crop is x 540-1380) */
+const PBK=[];for(let i=0;i<20;i++)PBK.push([]);
+const PCOL=[[255,184,90],[240,241,243],[16,16,18]];
+function drawPhone(prog,drift,sec){
+  for(const b of PBK)b.length=0;
+  const push=prog*0.35;let n=0;
+  for(const p of P){
+    n++;if(p.ri>=0&&(n&1))continue;
+    let x,y,a=p.c[3];
+    if(p.ri>=0){const r=RIB[p.ri];const tt=(p.t0+drift+push)%1;const L=r.c.length-1,j=Math.round(tt*L),c=r.c[j],tg=r.tan[j];const sp=r.s0+(r.s1-r.s0)*tt;x=c[0]-tg[1]*p.off*sp+tg[0]*p.along;y=c[1]+tg[0]*p.off*sp+tg[1]*p.along;a*=Math.min(1,tt/0.06)*Math.max(.2,1-tt*.75)}
+    else{x=p.x;y=p.y+prog*22*p.dep}
+    if(x<470||x>1450||(x>640&&x<1250&&y<780))continue;
+    if(!still){const amp=.6+2.6*p.dep;x+=Math.sin(sec*p.w+p.ph)*amp;y+=Math.cos(sec*p.w*.8+p.ph)*amp*.7}
+    const ci=p.c[0]===255?0:p.c[0]===240?1:2,q=Math.min(4,Math.round(a*4));if(!q)continue;
+    const rad=.6+1.6*Math.pow(p.dep,2.2);
+    PBK[ci*5+q].push(x,y,rad);
+    if(ci===0)PBK[15+Math.min(4,q)].push(x,y,rad*3.2);
+  }
+  for(let k=0;k<20;k++){const b=PBK[k];if(!b.length)continue;
+    const ci=k<15?Math.floor(k/5):0,q=k<15?k%5:k-15,[R,G,B]=PCOL[ci],al=k<15?q/4:.28*q/4;
+    ctx.fillStyle=`rgba(${R},${G},${B},${al.toFixed(3)})`;ctx.beginPath();
+    for(let i=0;i<b.length;i+=3){const r=b[i+2];ctx.rect(b[i]-r,b[i+1]-r,r*2,r*2)}
+    ctx.fill()}
+}
 function draw(now){
   const sec=(now-t0)/1000;
   shown+=(target-shown)*(still?1:0.11);
@@ -597,9 +639,10 @@ function draw(now){
   chapters(shown);
   {const z=shown>.885&&scrolly.getBoundingClientRect().bottom>90;if(z!==homeFrost){homeFrost=z;$('home').classList.toggle('frost',z)}}
   const f=Math.min(1,Math.max(0,(t-FADE_A)/(FADE_B-FADE_A))),o=1-f*f*(3-2*f);
-  dust.style.opacity=o.toFixed(3);
+  const osd=o.toFixed(3);if(draw.__o!==osd){draw.__o=osd;dust.style.opacity=osd}
   ctx.clearRect(0,0,W,H);
-  if(o>0.002){
+  if(o>0.002&&phone){drawPhone(t/DUR,still?0:sec*0.006,sec)}
+  else if(o>0.002){
     const prog=t/DUR,drift=still?0:sec*0.006,push=prog*0.35;
     for(const p of P){
       let x,y,dx=0,dy=1,a=p.c[3];
@@ -621,7 +664,7 @@ film.addEventListener('loadedmetadata',()=>{target=progress()});
 target=progress();requestAnimationFrame(draw);
 
 /* nav → the ask, menu */
-const toP=p=>scrollTo({top:scrolly.offsetTop+unwarp(p)*(scrolly.offsetHeight-innerHeight),behavior:'smooth'});
+const toP=p=>scrollTo({top:scrolly.offsetTop+unwarp(p)*(scrolly.offsetHeight-runH()),behavior:'smooth'});
 $('toAsk').addEventListener('click',()=>toP(1));
 const burger=$('burger'),menu=$('menu');burger.addEventListener('click',()=>{const o=menu.hidden;menu.hidden=!o;burger.setAttribute('aria-expanded',o)});
 menu.querySelectorAll('a[data-p]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();menu.hidden=true;burger.setAttribute('aria-expanded','false');toP(+a.dataset.p)}));
