@@ -305,12 +305,12 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .ch3 .c.head.fz::before{inset:4px 6px;backdrop-filter:blur(20px) brightness(1.12) saturate(1.05);-webkit-backdrop-filter:blur(20px) brightness(1.12) saturate(1.05);background:rgba(255,255,255,.26)}
   .ch1 .c.fore{padding:7px 14px}
   .ch1 .c.fore.fz::before{inset:0;border-radius:12px;backdrop-filter:blur(14px) brightness(1.1);-webkit-backdrop-filter:blur(14px) brightness(1.1);background:rgba(255,255,255,.2)}
-  .ch3 .c.st{text-align:center;padding:8px 8px 7px;height:68px;display:flex;flex-direction:column;justify-content:center;--dy:18px;--s:.96;right:calc(50% + 4px)!important}
-  .ch3 .st .n{font-size:clamp(21px,6.4vw,26px);margin-bottom:3px}.ch3 .st span{font-size:9.5px;line-height:1.2;display:block}
-  .ch3 .c.st:nth-child(5),.ch3 .c.st:nth-child(7){left:calc(50% + 4px)!important;right:16px!important}
-  .ch3 .c.st:nth-child(4),.ch3 .c.st:nth-child(5){bottom:calc(180px + env(safe-area-inset-bottom,0px))!important}
-  .ch3 .c.st:nth-child(6),.ch3 .c.st:nth-child(7){bottom:calc(106px + env(safe-area-inset-bottom,0px))!important}
-  .ch3 .c.st.fz::before{inset:3px 4px;border-radius:14px;background:rgba(255,255,255,.38);backdrop-filter:blur(16px) brightness(1.1);-webkit-backdrop-filter:blur(16px) brightness(1.1);-webkit-mask-image:none;mask-image:none}
+  /* the orbit: cards rise from behind her right shoulder, pass in front at chest height, slip behind the left one */
+  .ch3 .c.st{left:50%!important;right:auto!important;top:0!important;bottom:auto!important;width:72vw;margin-left:-36vw;height:92px;text-align:center;padding:12px 16px 10px;display:flex;flex-direction:column;justify-content:center;transform-origin:50% 50%;will-change:transform,opacity,filter;border-radius:20px}
+  .ch3 .st .n{font-size:clamp(30px,9vw,36px);margin-bottom:4px}.ch3 .st span{font-size:11px;line-height:1.25;display:block}
+  .ch3 .c.st.fz::before{inset:3px 4px;border-radius:16px;background:rgba(255,255,255,.4);backdrop-filter:blur(16px) brightness(1.1);-webkit-backdrop-filter:blur(16px) brightness(1.1);-webkit-mask-image:none;mask-image:none}
+  .ch3 .c.st.back{box-shadow:inset 0 1px 1px -.5px rgba(255,255,255,.7),0 6px 18px rgba(0,0,0,.06)}
+  .logos{bottom:calc(22px + env(safe-area-inset-bottom,0px))}
   .ch3 .c.head{bottom:calc(132px + env(safe-area-inset-bottom,0px))!important}
   .ch3 .c.head{top:calc(122px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
   .logos{left:16px;right:16px;width:auto;transform:none;bottom:calc(28px + env(safe-area-inset-bottom,0px));padding:9px 14px 6px;gap:5px;align-items:flex-start}
@@ -563,6 +563,20 @@ const EASE=.028;let lastPhase=-1,lastCh='';
 function applyTimings(){CHAP[3][2]=.70;CHAP[0][2]=phone?.13:.168;document.querySelectorAll('.c[data-at]').forEach(el=>{if(!el.dataset.at0)el.dataset.at0=el.dataset.at;el.dataset.at=el.dataset.at0});if(phone){const AT={'ch3 .c.head':.335,'ch5 .c.range':.765,'ch5 .c.ind':.838};for(const [sel,v] of Object.entries(AT)){const el=document.querySelector('.'+sel);if(el)el.dataset.at=v}[...document.querySelectorAll('.ch3 .c.st')].forEach((el,i)=>el.dataset.at=(.36+i*.035).toFixed(3))}}
 applyTimings();
 function countUp(n){n.dataset.done=1}
+/* the numbers orbit her on phone: a tilted ring, front at chest height and large, back behind her head and gone.
+   Four cards 90° apart; the chapter turns the ring 530° so each one gets its front moment, right shoulder in, left shoulder out. */
+const ORB={a0:.34,span:.19,turn:530,gap:90,lead:130,ry:74};
+function orbitCard(g,p,v){
+  if(g.__oi===undefined)g.__oi=[...g.parentNode.querySelectorAll('.c.st')].indexOf(g);
+  const phi=Math.min(1,Math.max(0,(p-ORB.a0)/ORB.span))*ORB.turn,deg=ORB.lead+g.__oi*ORB.gap-phi,th=deg*Math.PI/180,c=Math.cos(th),sn=Math.sin(th);
+  const aa=Math.abs(deg);/* no wrap: one pass per card, hidden before it enters and after it has gone behind her */
+  const d=Math.pow((1+c)/2,1.4),rx=stage.clientWidth*.40,cy=VH-234,x=rx*sn,y=cy+ORB.ry*c,sc=.5+.5*d;
+  const o=Math.min(1,Math.max(0,(120-aa)/50))*v,os=o.toFixed(3);
+  if(g.__o!==os){g.__o=os;g.style.opacity=os;g.style.visibility=o<.004?'hidden':''}
+  const ts=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${sc.toFixed(4)})`;if(g.__t!==ts){g.__t=ts;g.style.transform=ts}
+  const bl=still?'0':((1-c)*.9).toFixed(2),fs=bl==='0'||bl==='0.00'?'none':`blur(${bl}px)`;if(g.__f!==fs){g.__f=fs;g.style.filter=fs}
+  const z=String(4+Math.round(c*3)),bk=c<.2;if(g.__z!==z){g.__z=z;g.style.zIndex=z}if(g.__bk!==bk){g.__bk=bk;g.classList.toggle('back',bk)}
+}
 function chapters(p){
   if(phone){const act=CHAP.find(([id,a,b])=>p>=a&&p<b),aid=act?act[0]:'';if(aid!==lastCh){lastCh=aid;if(aid&&!still){thread.classList.remove('pulse');void thread.offsetWidth;thread.classList.add('pulse')}}}
   for(const [id,a,b] of CHAP){
@@ -570,6 +584,7 @@ function chapters(p){
     el.classList.toggle('on',on);
     const cards=el.__cards||(el.__cards=[...el.querySelectorAll('.c')]);
     cards.forEach((g,i)=>{
+      if(phone&&id==='ch3'&&g.classList.contains('st')){orbitCard(g,p,v);return}
       const at=+(g.dataset.at||a),slot=phone&&g.dataset.slot;let vi=Math.min(at===0?1:sm((p-at)/(slot?.014:EASE)),v);
       if(slot){const next=cards.slice(i+1).find(x=>x.dataset.slot===g.dataset.slot);if(next)vi=Math.min(vi,1-sm((p-(+next.dataset.at-0.018))/0.012))}
       if(id==='ch1'){if(g.id==='hint')vi=Math.min(vi,1-sm(p/0.02));if(phone&&g.id==='heroR')vi=0}
