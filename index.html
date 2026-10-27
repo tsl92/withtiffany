@@ -113,7 +113,7 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .tag{position:absolute;right:3%;top:calc(80px + env(safe-area-inset-top,0px));font-family:var(--fu);font-size:11px;letter-spacing:.26em;text-transform:uppercase;opacity:0;transition:opacity .6s;color:var(--ink)}
 .ch.on .tag{opacity:.6}
 .tag.side{top:50%;bottom:auto;letter-spacing:.34em;text-shadow:0 0 8px rgba(214,220,222,.95),0 0 18px rgba(214,220,222,.8)}.tag.side.hu{left:auto;right:calc(50% + 17vw)}.tag.side.mc{right:auto;left:calc(50% + 17vw)}.ch.on .tag.side{opacity:.78}
-.ch3 .tag.side{top:31%}
+.ch3 .tag.side{top:31%}.ch2 .tag.side{top:31%}.ch5 .tag.side{top:21%}
 .bare{background:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}.bare::after{display:none}
 
 /* hero */
@@ -123,7 +123,9 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .hero .ln{display:block}
 .fore{font-family:var(--fh);font-stretch:125%;font-weight:300;font-size:clamp(14px,1.2vw,19px);color:var(--ink);padding:0 4px;white-space:nowrap;text-align:right;max-width:none}
 .fore b{display:inline;font-weight:600}
-.speed{font-family:var(--fu);font-weight:500;font-size:clamp(11px,.85vw,13px);letter-spacing:.32em;color:var(--ink);padding:4px 8px;max-width:none;white-space:nowrap;--s:1;--dx:0px}
+.hero .speed{position:absolute;right:0;top:calc(100% + 12px);display:block;font-family:var(--fu);font-stretch:100%;font-weight:400;font-size:11px;line-height:1;letter-spacing:.34em;text-transform:uppercase;color:var(--ink);white-space:nowrap;opacity:0;transform:translateY(6px);transition:opacity .7s var(--ease),transform .7s var(--ease);text-shadow:0 0 8px rgba(214,220,222,.95),0 0 18px rgba(214,220,222,.8)}
+.hero.sp .speed{opacity:.78;transform:none}
+.hero .speed.m{display:none}
 .tagline{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(17% + env(safe-area-inset-bottom,0px));padding:10px 22px;font-family:var(--fh);font-stretch:125%;font-weight:300;font-size:clamp(16px,1.35vw,22px);letter-spacing:-.005em;color:var(--ink);opacity:0;transition:opacity .9s var(--ease);z-index:6;pointer-events:none;white-space:nowrap;isolation:isolate}
 .tagline::before{inset:0 4px;border-radius:14px}
 .tagline.on{opacity:.85}
@@ -292,11 +294,11 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   /* hero: one box on the chest, noticed → loved → stay loved, the founders line above it */
   .ch1 .c.hero{left:50%!important;right:auto!important;top:auto!important;bottom:calc(104px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%) translate3d(0,var(--dy),0);font-size:clamp(24px,7.4vw,32px);padding:12px 20px;text-align:center;white-space:nowrap}
   .ch1 .c.hero.on{transform:translateX(-50%)}
-  .ch1 .c.fore{left:50%!important;right:auto!important;top:auto!important;bottom:calc(56px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%);font-size:14px;text-align:center;white-space:nowrap}
-  #heroR,#speed{display:none}
+  .ch1 .c.fore{left:50%!important;right:auto!important;top:auto!important;bottom:calc(34px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%);font-size:14px;text-align:center;white-space:nowrap}
+  #heroR{display:none}
+  .hero .speed.m{display:block;top:calc(100% + 10px)}
   .ch2 .tag.side,.ch3 .tag.side{top:auto;bottom:calc(304px + env(safe-area-inset-bottom,0px));left:16px;right:auto}
   .ch2 .tag.side{bottom:calc(262px + env(safe-area-inset-bottom,0px))}
-  .ch1 .c.fore.sp{font-family:var(--fu);font-weight:500;font-size:11px;letter-spacing:.32em}
   /* words */
   .ch2 .c.q{font-size:15px;line-height:1.5}
   /* numbers: headline as a glass box too, stats one at a time, logos in a row above */
@@ -306,16 +308,16 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .ch1 .c.fore{padding:7px 14px}
   .ch1 .c.fore.fz::before{inset:0;border-radius:12px;backdrop-filter:blur(14px) brightness(1.1);-webkit-backdrop-filter:blur(14px) brightness(1.1);background:rgba(255,255,255,.2)}
   /* the orbit: cards rise from behind her right shoulder, pass in front at chest height, slip behind the left one */
-  .ch3 .c.st{left:50%!important;right:auto!important;top:0!important;bottom:auto!important;width:72vw;margin-left:-36vw;height:92px;text-align:center;padding:12px 16px 10px;display:flex;flex-direction:column;justify-content:center;transform-origin:50% 50%;will-change:transform,opacity,filter;border-radius:20px}
+  .ch3 .c.st{left:50%!important;right:auto!important;top:0!important;bottom:auto!important;width:72vw;margin-left:-36vw;height:88px;text-align:center;padding:12px 16px 10px;display:flex;flex-direction:column;justify-content:center;transform-origin:50% 50%;will-change:transform,opacity,filter;border-radius:20px}
   .ch3 .st .n{font-size:clamp(30px,9vw,36px);margin-bottom:4px}.ch3 .st span{font-size:11px;line-height:1.25;display:block}
   .ch3 .c.st.fz::before{inset:3px 4px;border-radius:16px;background:rgba(255,255,255,.4);backdrop-filter:blur(16px) brightness(1.1);-webkit-backdrop-filter:blur(16px) brightness(1.1);-webkit-mask-image:none;mask-image:none}
   .ch3 .c.st.back{box-shadow:inset 0 1px 1px -.5px rgba(255,255,255,.7),0 6px 18px rgba(0,0,0,.06)}
-  .logos{bottom:calc(22px + env(safe-area-inset-bottom,0px))}
+  .logos{bottom:calc(20px + env(safe-area-inset-bottom,0px));padding:8px 14px 5px;gap:4px}
   .ch3 .c.head{bottom:calc(132px + env(safe-area-inset-bottom,0px))!important}
   .ch3 .c.head{top:calc(122px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
   .logos{left:16px;right:16px;width:auto;transform:none;bottom:calc(28px + env(safe-area-inset-bottom,0px));padding:9px 14px 6px;gap:5px;align-items:flex-start}
   .logos::before{inset:0;border-radius:16px;-webkit-mask-image:none;mask-image:none;background:rgba(255,255,255,.16);backdrop-filter:blur(14px) brightness(1.06);-webkit-backdrop-filter:blur(14px) brightness(1.06)}
-  .logos .cap{white-space:normal;font-size:8px;letter-spacing:.2em;line-height:1.4;opacity:.6}
+  .logos .cap{white-space:nowrap;font-size:7.5px;letter-spacing:.18em;line-height:1.3;opacity:.6}
   .logos .band{height:26px;-webkit-mask-image:linear-gradient(90deg,#000 80%,transparent);mask-image:linear-gradient(90deg,#000 80%,transparent)}
   .logos img{height:15px}.logos img.sp{height:11px}
   /* work: swipe carousel over the dimmed film, the SPARITUAL glass box in the zone */
@@ -335,12 +337,14 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .col{position:static;display:contents}
   .ch5 .c.range,.ch5 .c.ind{position:absolute!important;width:auto;display:block}
   .ch5 .c.fz::before{inset:4px;border-radius:16px;backdrop-filter:blur(18px) brightness(1.1) saturate(1.05);-webkit-backdrop-filter:blur(18px) brightness(1.1) saturate(1.05);background:rgba(255,255,255,.24);-webkit-mask-image:radial-gradient(ellipse 85% 90% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 85% 90% at 50% 50%,#000 60%,transparent 100%)}
-  .ch5 .c.range{padding:14px 18px 10px;top:calc(92px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
+  .ch5 .c.range{padding:12px 16px 8px;top:calc(84px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
   .ch5 .c.ind{--dy:24px}
   .ch5 .c.g{backdrop-filter:blur(6px) saturate(1.3) brightness(1.08);-webkit-backdrop-filter:blur(6px) saturate(1.3) brightness(1.08)}
   .ch5 .c.range p{margin:0 -10px;padding:8px 10px;border-radius:12px;background:radial-gradient(ellipse 80% 90% at 50% 50%,rgba(238,241,242,.62) 55%,rgba(238,241,242,0) 100%)}.ch5 .c.range .flow .rail{margin-bottom:34px}.ch5 .c.range p{font-size:12px;line-height:1.42}
   .flow .subj{display:block}
-  .range h2{font-size:20px;margin-bottom:8px}.range .eb{display:none}.range p{font-size:12px;max-width:none}.flow{margin-top:8px;padding-top:8px}.flow .subj{display:none}.flow .rail{margin-bottom:34px}
+  .range h2{font-size:19px;margin-bottom:6px}.range .eb{display:none}.range p{font-size:11.5px;max-width:none}.flow{margin-top:6px;padding-top:6px}.flow .subj{display:none}.flow .rail{margin-bottom:32px}
+  .ch5 .tag{display:none}
+  .ch5 .flow .rail b small{font-weight:400}
   .ind .sc{margin-bottom:14px}.ind .tags{gap:5px}.ind .tags span{font-size:10px;padding:5px 9px}.ind .tt{margin-bottom:7px}.ch5 .c.ind{padding:14px 18px 14px}
   /* the ask */
   .askc{width:calc(100% - 32px)}
@@ -406,17 +410,16 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
     <div class="ch ch1 on" id="ch1">
       <span class="tag hu side" data-de="Mensch">human</span><span class="tag mc side" data-de="Maschine">machine</span>
       <div class="c bare fore fz" data-at="0" style="--r:calc(50% + 16vw);--t:calc(31% - 36px);--dx:-20px" data-deh="für Gründer mit &lt;b&gt;großen Ideen.&lt;/b&gt;">for founders with <b>big ideas.</b></div>
-      <div class="g c hero fz" id="heroL" data-at="0" style="--r:calc(50% + 16vw);--t:31%;--dx:-20px"><span class="ln">get <b class="w" id="w1">noticed.</b></span></div>
-      <div class="g c hero r" id="heroR" data-at="0.09" style="--l:calc(50% + 13vw);--t:31%;--dx:20px"><b>stay loved.</b></div>
-      <div class="c bare speed fz" id="speed" data-at="0.118" style="--l:calc(50% + 13vw + 6px);--t:calc(31% + 96px);--dy:10px">→ AT AI SPEED</div>
+      <div class="g c hero fz" id="heroL" data-at="0" style="--r:calc(50% + 16vw);--t:31%;--dx:-20px"><span class="ln">get <b class="w" id="w1">noticed.</b></span><span class="speed m" aria-hidden="true">→ AT AI SPEED</span></div>
+      <div class="g c hero r" id="heroR" data-at="0.09" style="--l:calc(50% + 13vw);--t:31%;--dx:20px"><b>stay loved.</b><span class="speed" aria-hidden="true">→ AT AI SPEED</span></div>
       <div class="g c hint" id="hint"><i></i><span data-de="scrollen">scroll</span></div>
     </div>
 
     <!-- 02 in their words -->
     <div class="ch ch2 insheet" id="ch2">
       <span class="tag" data-de="was andere sagen">what others say</span><span class="tag hu side" data-de="Mensch">human</span>
-      <div class="g c q fz" data-at="0.18" data-slot="q" style="--l:12%;--b:24%"><span class="star">★★★★★</span><span data-de="„Ein unglaubliches Talent, komplexe Herausforderungen greifbar zu machen.“">"An incredible ability to take complex challenges and simplify them."</span><span class="by" data-de="General Manager, ehemals Nike">a general manager, ex-Nike</span></div>
-      <div class="g c q fz" data-at="0.245" data-slot="q" style="--r:12%;--b:26%"><span class="star">★★★★★</span><span data-de="„Die seltene Mischung aus Querdenken und klarer Struktur: sieht das große Ganze und bleibt dabei fokussiert.“">"A rare balance of lateral and vertical thinking: connects the dots while staying focused."</span><span class="by" data-de="Business Portfolio Manager">a business portfolio manager</span></div>
+      <div class="g c q fz" data-at="0.18" data-slot="q" style="--l:9%;--b:40%"><span class="star">★★★★★</span><span data-de="„Ein unglaubliches Talent, komplexe Herausforderungen greifbar zu machen.“">"An incredible ability to take complex challenges and simplify them."</span><span class="by" data-de="General Manager, ehemals Nike">a general manager, ex-Nike</span></div>
+      <div class="g c q fz" data-at="0.245" data-slot="q" style="--l:15%;--b:13%"><span class="star">★★★★★</span><span data-de="„Die seltene Mischung aus Querdenken und klarer Struktur: sieht das große Ganze und bleibt dabei fokussiert.“">"A rare balance of lateral and vertical thinking: connects the dots while staying focused."</span><span class="by" data-de="Business Portfolio Manager">a business portfolio manager</span></div>
     </div>
 
     <!-- 03 numbers + logos -->
@@ -451,7 +454,7 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
 
     <!-- 05 range -->
     <div class="ch ch5 insheet" id="ch5">
-      <span class="tag" data-de="Bandbreite">range</span>
+      <span class="tag" data-de="Bandbreite">range</span><span class="tag hu side" data-de="Mensch">human</span>
       <div class="col"><div class="g c range fz" data-at="0.77" style="--l:14%;--t:28%"><span class="eb" data-de="verschiedene Branchen">different industries</span><h2 data-deh="Verschiedene Branchen.&lt;br&gt;&lt;b&gt;Dasselbe Problem.&lt;/b&gt;">Different industries.<br><b>Same problem.</b></h2>
         <p data-deh="Wie du &lt;b&gt;DICH, dein Unternehmen, dein Angebot oder deine exklusive Mitgliedschaft&lt;/b&gt; positionierst und vermarktest.&lt;span class=&quot;p2&quot;&gt; Anders gesagt: wie du deine Wunschkunden gewinnst, begeisterst und hältst.&lt;/span&gt;">How to position and market <b>YOU, your business, your offer, or exclusive membership.</b><span class="p2"> In other words, how to hook, engage and keep your ideal customers.</span></p>
         <div class="flow"><div class="subj"><span class="lbl2" data-de="für">for</span> <span class="sw" id="subj">you</span></div><div class="rail"><i id="flowDot"></i><b style="left:0"><span data-de="gewinnen">hook</span><small>get noticed.</small></b><b style="left:50%"><span data-de="begeistern">engage</span><small>get loved.</small></b><b style="left:100%"><span data-de="halten">keep</span><small>stay loved.</small></b></div></div></div>
@@ -538,14 +541,14 @@ function drawSeq(t){let i=Math.min(NF-1,Math.max(0,Math.round(t*FPS)));if(!SEQ[i
 if(phone)loadSeq();
 
 /* scale */
-let VH=0,LVH=0,LVW=0;const lvp=$('lvp');function fit(){const vw=stage.clientWidth,vh=VH=stage.clientHeight;if(vw!==LVW){LVW=vw;LVH=0}LVH=Math.max(LVH,lvp.offsetHeight||0,vh);const ah=phone?LVH:vh;let s=ah/H;let y;if(phone){s=Math.min(ah/H,(vw*0.8)/610);y=ah-H*s;if(cv.width!==960){cv.width=960;cv.height=540;ctx.setTransform(.5,0,0,.5,0,0)}}else{if(s>1)s=Math.min(1.3,(vh*0.94)/H);y=vh-H*s;if(cv.width!==1920){cv.width=1920;cv.height=1080;ctx.setTransform(1,0,0,1,0,0)}}frame.style.transform=`translate(${(vw-W*s)/2}px,${y}px) translateY(var(--dy,0px)) scale(${s})`;$('edge').style.backgroundSize=`${W*2*s}px 100%`;$('edge').style.width=`${W*2*s}px`}
+let VH=0,LVH=0,LVW=0,SH=0;const lvp=$('lvp');function fit(){const vw=stage.clientWidth,vh=VH=stage.clientHeight;if(vw!==LVW){LVW=vw;LVH=0;SH=Math.max(screen.width,screen.height)}LVH=Math.max(LVH,lvp.offsetHeight||0,vh);const ah=phone?SH:vh;let s=ah/H;let y;if(phone){s=Math.max((vw*0.875)/610,(SH*0.76)/H);y=SH*0.24;scrolly.style.height=(parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--n'))*SH)+'px';if(cv.width!==960){cv.width=960;cv.height=540;ctx.setTransform(.5,0,0,.5,0,0)}}else{scrolly.style.height='';if(s>1)s=Math.min(1.3,(vh*0.94)/H);y=vh-H*s;if(cv.width!==1920){cv.width=1920;cv.height=1080;ctx.setTransform(1,0,0,1,0,0)}}frame.style.transform=`translate(${(vw-W*s)/2}px,${y}px) translateY(var(--dy,0px)) scale(${s})`;$('edge').style.backgroundSize=`${W*2*s}px 100%`;$('edge').style.width=`${W*2*s}px`}
 addEventListener('resize',fit);fit();
 mqPhone.addEventListener('change',e=>{phone=e.matches;applyTimings();lastPhase=-1;lastIdx=-1;if(phone)loadSeq();else loadFilm();fit()});
 
 /* scroll progress → film time; flat segments are held frames; the film is over by .90 */
 const MAP=[[0,0],[.14,3],[.18,4.5],[.30,4.5],[.34,7],[.47,12],[.52,12],[.58,18.6],[.72,18.6],[.76,21.4],[.86,21.4],[.90,DUR],[1,DUR]];
 function timeAt(p){for(let i=1;i<MAP.length;i++){if(p<=MAP[i][0]){const [a,ta]=MAP[i-1],[b,tb]=MAP[i];return ta+(p-a)/(b-a)*(tb-ta)}}return DUR}
-const runH=()=>phone?(LVH||innerHeight):innerHeight;
+const runH=()=>phone?(SH||innerHeight):innerHeight;
 function progress(){const r=scrolly.getBoundingClientRect(),run=r.height-runH();if(!(run>0))return 0;return Math.min(1,Math.max(0,-r.top/run))}
 
 /* particles (approved prototype) */
@@ -576,7 +579,7 @@ function orbitCard(g,p,v){
   if(g.__oi===undefined)g.__oi=[...g.parentNode.querySelectorAll('.c.st')].indexOf(g);
   const phi=Math.min(1,Math.max(0,(p-ORB.a0)/ORB.span))*ORB.turn,deg=ORB.lead+g.__oi*ORB.gap-phi,th=deg*Math.PI/180,c=Math.cos(th),sn=Math.sin(th);
   const aa=Math.abs(deg);/* no wrap: one pass per card, hidden before it enters and after it has gone behind her */
-  const d=Math.pow((1+c)/2,1.4),rx=stage.clientWidth*.40,cy=VH-234,x=rx*sn,y=cy+ORB.ry*c,sc=.5+.5*d;
+  const d=Math.pow((1+c)/2,1.4),rx=stage.clientWidth*.40,cy=VH-202,x=rx*sn,y=cy+ORB.ry*c,sc=.5+.5*d;
   const o=Math.min(1,Math.max(0,(120-aa)/50))*v,os=o.toFixed(3);
   if(g.__o!==os){g.__o=os;g.style.opacity=os;g.style.visibility=o<.004?'hidden':''}
   const ts=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${sc.toFixed(4)})`;if(g.__t!==ts){g.__t=ts;g.style.transform=ts}
@@ -609,8 +612,8 @@ function chapters(p){
   if(phase!==lastPhase){lastPhase=phase;const w1=$('w1'),hl=$('heroL');
     const txt=phase===0?'noticed.':phase===1?'loved.':(phone?'stay loved.':'loved.');
     if(w1.textContent!==txt){w1.animate([{opacity:1,transform:'translateY(0)'},{opacity:0,transform:'translateY(-10px)'},{opacity:0,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:520,easing:'ease-in-out'});setTimeout(()=>{w1.textContent=txt;hl.querySelector('.ln').firstChild.textContent=(phone&&phase===2)?'':'get '},240)}
-    if(phone){const fo=document.querySelector('.ch1 .c.fore'),sp=phase===2;if(fo&&fo.classList.contains('sp')!==sp){fo.animate([{opacity:1},{opacity:0},{opacity:0},{opacity:1}],{duration:520,easing:'ease-in-out'});setTimeout(()=>{fo.classList.toggle('sp',sp);fo.innerHTML=sp?'→ AT AI SPEED':(LANG==='de'?'für Gründer mit <b>großen Ideen.</b>':'for founders with <b>big ideas.</b>')},240)}}
   }
+  {const sp=phone?phase===2:p>.125;const hb=phone?$('heroL'):$('heroR');if(hb.__sp!==sp){hb.__sp=sp;hb.classList.toggle('sp',sp)}}
   /* hand-over: film fades and lifts, bloom peaks, the + film materialises */
   const h=sm((p-.875)/.06);
   const hs=h.toFixed(3);if(chapters.__h!==hs){chapters.__h=hs;filmwrap.style.opacity=(1-h).toFixed(3);filmwrap.style.transform=`scale(${1+h*0.04})`;$('plusbg').style.opacity=hs;stage.style.setProperty('--endfade',hs)}
