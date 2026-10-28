@@ -91,7 +91,10 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .frame{position:absolute;left:0;top:0;width:1920px;height:1080px;transform-origin:0 0;transition:filter .7s var(--ease),opacity .7s var(--ease)}
 .edge{position:absolute;left:50%;bottom:0;height:60vh;transform:translateX(-50%);background:url(a/edge_wide.png) repeat-y center top;display:none}
 #seq{position:absolute;left:540px;top:0;width:840px;height:1080px;display:none;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%),linear-gradient(to bottom,#000 70%,transparent 96%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%),linear-gradient(to bottom,#000 70%,transparent 96%);mask-composite:intersect}
-@media (max-width:700px){.edge{display:none}#seq{display:block}.frame video{visibility:hidden}}
+@media (max-width:700px){.edge{display:none}#seq{display:block}.frame video{visibility:hidden}
+  .stage{background:linear-gradient(#C3CDCF,#B5C0C4)}
+  .frame .surround{-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 96%);mask-image:linear-gradient(to bottom,#000 80%,transparent 96%)}
+  .dust{-webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 97%);mask-image:linear-gradient(to bottom,#000 72%,transparent 97%)}}
 .frame.dim{opacity:.45}
 .frame video,.frame canvas,.frame .dust img{position:absolute;inset:0;width:1920px;height:1080px;display:block}
 .frame .surround{position:absolute;left:-960px;top:-1080px;width:3840px;height:2160px;display:block;max-width:none}
@@ -577,7 +580,7 @@ function orbitCard(g,p,v){
   if(g.__oi===undefined)g.__oi=[...g.parentNode.querySelectorAll('.c.st')].indexOf(g);
   const phi=Math.min(1,Math.max(0,(p-ORB.a0)/ORB.span))*ORB.turn,deg=ORB.lead+g.__oi*ORB.gap-phi,th=deg*Math.PI/180,c=Math.cos(th),sn=Math.sin(th);
   const aa=Math.abs(deg);/* no wrap: one pass per card, hidden before it enters and after it has gone behind her */
-  const d=Math.pow((1+c)/2,1.4),rx=stage.clientWidth*.40,cy=(LOGT||VH-80)-14-88-ORB.ry+(VH-H0),x=rx*sn,y=cy+ORB.ry*c,sc=.5+.5*d;
+  const d=Math.pow((1+c)/2,1.4),rx=stage.clientWidth*.40,cy=(LOGT||VH-80)-14-88-ORB.ry,x=rx*sn,y=cy+ORB.ry*c,sc=.5+.5*d;
   const o=Math.min(1,Math.max(0,(120-aa)/50))*v,os=o.toFixed(3);
   if(g.__o!==os){g.__o=os;g.style.opacity=os;g.style.visibility=o<.004?'hidden':''}
   const ts=`translate3d(${x.toFixed(1)}px,${y.toFixed(1)}px,0) scale(${sc.toFixed(4)})`;if(g.__t!==ts){g.__t=ts;g.style.transform=ts}
