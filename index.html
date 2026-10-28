@@ -188,12 +188,11 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .flow .rail b{position:absolute;top:10px;transform:translateX(-50%);font-family:var(--fu);font-size:9px;letter-spacing:.22em;text-transform:uppercase;opacity:.4;text-align:center;transition:opacity .4s;white-space:nowrap}
 .flow .rail b:first-of-type{transform:none}.flow .rail b:last-of-type{transform:translateX(-100%)}
 .flow .rail b.lit{opacity:1}
-.flow .rail b small{display:block;font-family:var(--fh);font-stretch:125%;font-weight:600;font-size:11px;letter-spacing:0;text-transform:none;margin-top:2px}
+.flow .rail b small{display:block;font-family:var(--fh);font-stretch:125%;font-weight:400;font-size:11px;letter-spacing:0;text-transform:none;margin-top:2px}
 .col{position:absolute;left:max(40px,8vw);top:50%;transform:translateY(-46%);display:flex;flex-direction:column;gap:14px;align-items:stretch;width:min(420px,29vw)}
 .col .range{max-width:none}
 .col .c{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important}
 .ind{width:100%;max-width:none;box-sizing:border-box;padding:22px 28px 22px;--dx:-20px;display:block}
-.ind .pm{display:none}
 .ind .sc{margin-bottom:0}
 .ind .tt{font-family:var(--fu);font-size:10px;letter-spacing:.26em;text-transform:uppercase;opacity:.55;display:block;margin-bottom:10px}
 .ind .sc{font-family:var(--fu);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin-bottom:18px}
@@ -343,11 +342,9 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .ch5 .c.range,.ch5 .c.ind{position:absolute!important;width:auto;display:block}
   .ch5 .c.fz::before{inset:4px;border-radius:16px;backdrop-filter:blur(18px) brightness(1.1) saturate(1.05);-webkit-backdrop-filter:blur(18px) brightness(1.1) saturate(1.05);background:rgba(255,255,255,.24);-webkit-mask-image:radial-gradient(ellipse 85% 90% at 50% 50%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 85% 90% at 50% 50%,#000 60%,transparent 100%)}
   .ch5 .c.range{padding:16px 20px 6px;top:calc(82px + env(safe-area-inset-top,0px))!important;bottom:auto!important;--dy:-16px}
-  .ch5 .c.range p{display:none}
-  .ind .pm{display:block;font-size:12.5px;line-height:1.5;font-weight:400;color:var(--graphite);margin:0 0 14px}.ind .pm b{display:inline;font-family:var(--fb);font-weight:600;font-stretch:100%}
   .ch5 .c.ind{--dy:24px}
   .ch5 .c.g{backdrop-filter:blur(6px) saturate(1.3) brightness(1.08);-webkit-backdrop-filter:blur(6px) saturate(1.3) brightness(1.08)}
-  .ch5 .c.range p{margin:0 -10px;padding:8px 10px;border-radius:12px;background:radial-gradient(ellipse 80% 90% at 50% 50%,rgba(238,241,242,.62) 55%,rgba(238,241,242,0) 100%)}.ch5 .c.range .flow .rail{margin-bottom:44px}.ch5 .c.range p{font-size:12px;line-height:1.42}
+  .ch5 .c.range p{margin:10px 0 0;padding:0;background:none;font-size:12.5px;line-height:1.5}.ch5 .c.range p b{display:inline;font-family:var(--fb);font-stretch:100%;font-weight:500}.ch5 .c.range .flow .rail{margin-bottom:44px}
   .flow .subj{display:block}
   .range h2{font-size:21px;line-height:1.08;margin-bottom:0}.range .eb{display:none}.flow{margin-top:14px;padding-top:0;border-top:0}.flow .subj{display:none}.flow .rail{margin:0 10px 44px}
   .ch5 .tag{display:none}
@@ -463,10 +460,10 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
     <div class="ch ch5 insheet" id="ch5">
       <span class="tag" data-de="Bandbreite">range</span><span class="tag hu side" data-de="Mensch">human</span>
       <div class="col"><div class="g c range fz" data-at="0.77" style="--l:14%;--t:28%"><span class="eb" data-de="verschiedene Branchen">different industries</span><h2 data-deh="Verschiedene Branchen.&lt;br&gt;&lt;b&gt;Dasselbe Problem.&lt;/b&gt;">Different industries.<br><b>Same problem.</b></h2>
-        <p data-deh="Wie du &lt;b&gt;DICH, dein Unternehmen, dein Angebot oder deine exklusive Mitgliedschaft&lt;/b&gt; positionierst und vermarktest.&lt;span class=&quot;p2&quot;&gt; Anders gesagt: wie du deine Wunschkunden gewinnst, begeisterst und hältst.&lt;/span&gt;">How to position and market <b>YOU, your business, your offer, or exclusive membership.</b><span class="p2"> In other words, how to hook, engage and keep your ideal customers.</span></p>
+        <p data-deh="Wie du &lt;b&gt;DICH, dein Unternehmen, dein Angebot oder deine exklusive Mitgliedschaft&lt;/b&gt; so positionierst und vermarktest, dass andere darauf anspringen.&lt;span class=&quot;p2&quot;&gt; Anders gesagt, wie du:&lt;/span&gt;">How to position and market <b>YOU, your business, your offer, or exclusive membership</b> so others buy into it.<span class="p2"> In other words, how to:</span></p>
         <div class="flow"><div class="subj"><span class="lbl2" data-de="für">for</span> <span class="sw" id="subj">you</span></div><div class="rail"><i id="flowDot"></i><b style="left:0"><span data-de="gewinnen">hook</span><small>get noticed.</small></b><b style="left:50%"><span data-de="begeistern">engage</span><small>get loved.</small></b><b style="left:100%"><span data-de="halten">keep</span><small>stay loved.</small></b></div></div></div>
-      <div class="g c ind fz" data-at="0.795" style="--l:14%;--t:38%"><p class="pm" data-deh="Wie du &lt;b&gt;DICH, dein Unternehmen, dein Angebot oder deine exklusive Mitgliedschaft&lt;/b&gt; positionierst und vermarktest.&lt;span class=&quot;p2&quot;&gt; Anders gesagt: wie du deine Wunschkunden gewinnst, begeisterst und hältst.&lt;/span&gt;">How to position and market <b>YOU, your business, your offer, or exclusive membership.</b><span class="p2"> In other words, how to hook, engage and keep your ideal customers.</span></p><div class="sc"><div class="ends"><span data-de="€3K-Monate">€3K months</span><span data-de="€10M-Monate">€10M months</span></div><div class="bar"><i id="scaleDot"></i></div></div>
-        <div><span class="tt" data-de="Branchen">industries</span><div class="tags" id="tags"><span data-de="Beauty + Wellness">beauty + wellness</span><span data-de="Mitgliedschaften">memberships</span><span data-de="Lotterien">lotteries</span><span data-de="Tech-Start-ups">tech start-ups</span><span data-de="Markteintritt DACH">DACH market entry</span><span data-de="Online-Entertainment">online entertainment</span><span data-de="Wettbörse">betting exchange</span><span data-de="VIP + vermögende Kunden">VIP + high net worth</span><span data-de="D2C-Abos">D2C subscription</span></div></div></div></div>
+      <div class="g c ind fz" data-at="0.795" style="--l:14%;--t:38%"><div class="sc"><div class="ends"><span data-de="€3K-Monate">€3K months</span><span data-de="€10M-Monate">€10M months</span></div><div class="bar"><i id="scaleDot"></i></div></div>
+        <div><span class="tt" data-de="Branchen">industries</span><div class="tags" id="tags"><span data-de="Beauty + Wellness">beauty + wellness</span><span data-de="Mitgliedschaften">memberships</span><span data-de="Tech-Start-ups">tech start-ups</span><span data-de="Markteintritt DACH">DACH market entry</span><span data-de="VIP + vermögende Kunden">VIP + high net worth</span><span data-de="D2C-Abos">D2C subscription</span></div></div></div></div>
     </div>
 
     <!-- 06 the ask -->
