@@ -11,8 +11,7 @@
 <meta property="og:url" content="https://withtiffany.co/">
 <meta name="theme-color" content="#B1BBC1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%23E6E8E8%27/%3E%3Ctext x=%2732%27 y=%2745%27 text-anchor=%27middle%27 font-family=%27Helvetica,Arial,sans-serif%27 font-weight=%27300%27 font-size=%2738%27 fill=%27%230D0D0E%27%3E+%3C/text%3E%3C/svg%3E">
-<link rel="preload" as="image" href="a/poster.jpg" media="(min-width:701px)">
-<link rel="preload" as="image" href="a/erase-m.webp" media="(max-width:700px)" fetchpriority="high">
+<link rel="preload" as="image" href="a/poster.jpg">
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <link rel="preload" href="a/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -97,7 +96,6 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 .edge{position:absolute;left:50%;bottom:0;height:60vh;transform:translateX(-50%);background:url(a/edge_wide.png) repeat-y center top;display:none}
 #seq{position:absolute;left:540px;top:0;width:840px;height:1080px;display:none;-webkit-mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%),linear-gradient(to bottom,#000 70%,transparent 96%);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 60px,#000 calc(100% - 60px),transparent 100%),linear-gradient(to bottom,#000 70%,transparent 96%);mask-composite:intersect}
 @media (max-width:700px){.edge{display:none}#seq{display:block}.frame video{visibility:hidden}
-  .frame .dust img{left:540px;width:840px}
   .stage{background:linear-gradient(#C3CDCF,#B5C0C4)}
   .frame .surround{-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 96%);mask-image:linear-gradient(to bottom,#000 80%,transparent 96%)}
   .dust{position:absolute;inset:0;-webkit-mask-image:linear-gradient(to bottom,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 86%,transparent 100%)}}
@@ -406,14 +404,14 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
     <div class="filmwrap" id="filmwrap"><div class="edge" id="edge"></div><div class="frame" id="frame">
       <img class="surround" src="a/surround.jpg" alt="">
       <div class="content">
-        <video id="film" muted playsinline preload="auto" aria-label="Tiffany, half human, half machine: the film"></video>
+        <video id="film" poster="a/poster.jpg" muted playsinline preload="auto" aria-label="Tiffany, half human, half machine: the film"></video>
         <canvas id="seq" width="560" height="720" aria-hidden="true"></canvas>
         <canvas id="snap" width="1920" height="1080" aria-hidden="true"></canvas>
-        <div class="dust" id="dust"><picture><source media="(max-width:700px)" srcset="a/erase-m.webp"><img src="a/erase.webp" alt="" fetchpriority="high" width="1920" height="1080"></picture><canvas id="specks" width="1920" height="1080"></canvas></div>
+        <div class="dust" id="dust"><img src="a/erase.webp" alt=""><canvas id="specks" width="1920" height="1080"></canvas></div>
       </div>
     </div></div>
     <div class="plusbg" id="plusbg"></div>
-    <div class="plusv" id="plusv"><video id="plus" muted playsinline loop preload="none" aria-label="A glass plus turning"></video></div>
+    <div class="plusv" id="plusv"><video id="plus" src="a/plus.mp4" poster="a/plus-poster.jpg" muted playsinline loop preload="metadata" aria-label="A glass plus turning"></video></div>
     <div class="bloom" id="bloom"></div>
     <div class="sheet" id="sheet" aria-hidden="true"><i class="grip"></i></div>
     <div class="thread" id="thread" aria-hidden="true"></div>
@@ -445,8 +443,8 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
       <div class="logos" aria-label="brands she worked with or for" data-de-aria="Marken, mit oder für die sie gearbeitet hat">
         <span class="cap" data-de="ein paar Marken, die du vielleicht kennst · + ein paar, die ich nicht nennen darf. NDAs eben.">some brands you might know · + a few I can't name, NDAs and all</span>
         <div class="band"><div class="track">
-          <img src="a/logo-betway.png" width="184" height="52" alt="Betway"><img src="a/logo-smarkets.png" width="233" height="52" alt="Smarkets"><img src="a/logo-lottoland.png" width="165" height="52" alt="Lottoland"><img class="sp" src="a/logo-sparitual.png" width="253" height="28" alt="SPARITUAL">
-          <img src="a/logo-betway.png" width="184" height="52" alt=""><img src="a/logo-smarkets.png" width="233" height="52" alt=""><img src="a/logo-lottoland.png" width="165" height="52" alt=""><img class="sp" src="a/logo-sparitual.png" width="253" height="28" alt="">
+          <img src="a/logo-betway.png" alt="Betway"><img src="a/logo-smarkets.png" alt="Smarkets"><img src="a/logo-lottoland.png" alt="Lottoland"><img class="sp" src="a/logo-sparitual.png" alt="SPARITUAL">
+          <img src="a/logo-betway.png" alt=""><img src="a/logo-smarkets.png" alt=""><img src="a/logo-lottoland.png" alt=""><img class="sp" src="a/logo-sparitual.png" alt="">
         </div></div>
       </div>
     </div>
@@ -529,7 +527,7 @@ let filmLoading=false;async function loadFilm(){if(filmLoading||film.getAttribut
 
 /* preloader */
 const pre=$('pre'),preBar=$('preBar');let ready=false;
-if(!phone){film.poster='a/poster.jpg';loadFilm()}setTimeout(done,20000);
+if(!phone)loadFilm();setTimeout(done,20000);
 function done(){if(ready)return;ready=true;pre.classList.add('off');setTimeout(()=>pre.remove(),1200)}
 film.addEventListener('progress',()=>{try{if(film.buffered.length&&!film.src.startsWith('blob:')){const b=film.buffered.end(film.buffered.length-1)/(film.duration||DUR);preBar.style.setProperty('--w',(4+96*b)+'%');if(b>0.98)done()}}catch(e){}});
 film.addEventListener('canplaythrough',()=>{preBar.style.setProperty('--w','100%');setTimeout(done,350)},{once:true});
@@ -538,7 +536,7 @@ setTimeout(done,7000);if(!phone)film.load();
 /* phone: Apple-style frame sequence (iOS will not repaint a scrubbed paused video) */
 const NF=303,FPS=12,SEQ=[],seq=$('seq'),sq=seq.getContext('2d');let seqStarted=false,seqLoaded=0,lastIdx=-1;
 function loadSeq(){if(seqStarted)return;seqStarted=true;const order=[],seen=new Set();for(const st of [8,4,2,1])for(let i=0;i<NF;i+=st)if(!seen.has(i)){seen.add(i);order.push(i)}
-  let k=0;const next=()=>{if(k>=order.length)return;const i=order[k++],im=new Image();im.decoding='async';im.onload=()=>{const got=()=>{seqLoaded++;preBar.style.setProperty('--w',(4+96*Math.min(1,seqLoaded/Math.ceil(NF/8)))+'%');if(seqLoaded>=Math.ceil(NF/8))done();if(lastIdx<0)lastIdx=-2;next()};if(window.createImageBitmap)createImageBitmap(im).then(bm=>{SEQ[i]=bm;got()},()=>{SEQ[i]=im;got()});else{SEQ[i]=im;got()}};im.onerror=next;im.src='a/f/'+String(i+1).padStart(4,'0')+'.webp'};for(let c=0;c<6;c++)next()}
+  let k=0;const next=()=>{if(k>=order.length)return;const i=order[k++],im=new Image();im.decoding='async';im.onload=()=>{const got=()=>{seqLoaded++;preBar.style.setProperty('--w',(4+96*Math.min(1,seqLoaded/Math.ceil(NF/4)))+'%');if(seqLoaded>=Math.ceil(NF/4))done();if(lastIdx<0)lastIdx=-2;next()};if(window.createImageBitmap)createImageBitmap(im).then(bm=>{SEQ[i]=bm;got()},()=>{SEQ[i]=im;got()});else{SEQ[i]=im;got()}};im.onerror=next;im.src='a/f/'+String(i+1).padStart(4,'0')+'.webp'};for(let c=0;c<6;c++)next()}
 function drawSeq(t){let i=Math.min(NF-1,Math.max(0,Math.round(t*FPS)));if(!SEQ[i]){for(let d=1;d<NF;d++){if(SEQ[i-d]){i-=d;break}if(SEQ[i+d]){i+=d;break}}}if(!SEQ[i]||i===lastIdx)return;lastIdx=i;sq.drawImage(SEQ[i],0,0,560,720)}
 if(phone)loadSeq();
 
@@ -626,7 +624,6 @@ function chapters(p){
   if(p<.86&&stage.classList.contains('form'))$('plusbtn').click();
   const pv=$('plusv'),pvo=(sm((p-.885)/.05)*(stage.classList.contains('form')?.35:1)).toFixed(3),pvt=`scale(${(1.12-0.12*sm((p-.885)/.08)).toFixed(4)})`;if(chapters.__pv!==pvo+pvt){chapters.__pv=pvo+pvt;pv.style.opacity=pvo;pv.style.transform=pvt}
   const bl=(Math.sin(Math.PI*sm((p-.87)/.07))*0.9).toFixed(3);if(chapters.__bl!==bl){chapters.__bl=bl;$('bloom').style.opacity=bl}
-  if(p>.6&&!plusLoaded){plusLoaded=true;const pl=$('plus');pl.poster='a/plus-poster.jpg';pl.src='a/plus.mp4';pl.preload='auto'}
   if(h>0.3&&$('plus').paused)$('plus').play().catch(()=>{});if(h<0.05&&!$('plus').paused)$('plus').pause();
   /* ask line rotates with scroll */
 }
@@ -636,7 +633,7 @@ let target=0,shown=0,primed=false,t0=performance.now();
 addEventListener('scroll',()=>{target=progress()},{passive:true});
 function prime(){if(primed)return;primed=true;const pr=film.play();if(pr&&pr.then)pr.then(()=>film.pause()).catch(()=>{})}
 ['pointerdown','touchstart','wheel','keydown'].forEach(e=>addEventListener(e,prime,{once:true,passive:true}));
-let homeFrost=false,plusLoaded=false;
+let homeFrost=false;
 /* phone renderer: the same field, drawn as ~16 batched fills instead of ~6800 (the crop is x 540-1380) */
 const PBK=[];for(let i=0;i<20;i++)PBK.push([]);
 const PCOL=[[255,184,90],[240,241,243],[16,16,18]];
