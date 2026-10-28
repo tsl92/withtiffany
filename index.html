@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>with Tiffany · get noticed. get loved. stay loved.</title>
-<meta name="description" content="Tiffany Santisteban Lagos. Twelve years in one of the fastest-paced industries there is. For founders with big ideas.">
+<meta name="description" content="Tiffany Santisteban Lagos. Twelve years in one of the fastest-paced industries there is. For those with big ideas.">
 <meta property="og:title" content="with Tiffany · get noticed. get loved. stay loved.">
-<meta property="og:description" content="For founders with big ideas.">
+<meta property="og:description" content="For those with big ideas.">
 <meta property="og:image" content="https://withtiffany.co/a/poster.jpg">
 <meta property="og:url" content="https://withtiffany.co/">
 <meta name="theme-color" content="#B1BBC1">
@@ -41,6 +41,10 @@ h1,h2,h3,p{margin:0;font-weight:inherit}
 .g::after{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.15px;pointer-events:none;background:conic-gradient(rgba(255,255,255,.34),rgba(255,255,255,.2) 50deg,rgba(255,255,255,.26) 95deg,rgba(255,255,255,.84) 135deg,rgba(255,255,255,.3) 185deg,rgba(255,255,255,.18) 230deg,rgba(255,255,255,.3) 275deg,rgba(255,255,255,.96) 315deg,rgba(255,255,255,.34));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
 /* uneven frost behind the text only (phone cards over the film) */
 .fz::before{content:"";position:absolute;inset:6px 10px;border-radius:12px;z-index:-1;backdrop-filter:blur(14px) brightness(1.08) saturate(1.05);-webkit-backdrop-filter:blur(14px) brightness(1.08) saturate(1.05);background:rgba(255,255,255,.16);-webkit-mask-image:radial-gradient(ellipse 62% 78% at 38% 48%,#000 42%,transparent 100%),radial-gradient(ellipse 58% 84% at 72% 52%,#000 36%,transparent 100%);mask-image:radial-gradient(ellipse 62% 78% at 38% 48%,#000 42%,transparent 100%),radial-gradient(ellipse 58% 84% at 72% 52%,#000 36%,transparent 100%)}
+
+/* progress line (phone) */
+.prog{position:fixed;right:3px;top:calc(96px + env(safe-area-inset-top,0px));width:2px;height:calc(100% - 200px);border-radius:2px;background:rgba(13,13,14,.08);z-index:41;pointer-events:none;display:none}.prog::after{content:"";position:absolute;left:0;top:0;width:100%;height:calc(var(--k,0)*100%);border-radius:2px;background:rgba(13,13,14,.55)}
+@media (max-width:700px){.prog{display:block}}
 
 /* nav */
 .nav{position:fixed;left:0;right:0;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:calc(16px + env(safe-area-inset-top,0px)) max(24px,env(safe-area-inset-right,0px)) 14px max(24px,env(safe-area-inset-left,0px));pointer-events:none}
@@ -94,7 +98,7 @@ html[lang=de] .range h2{font-size:clamp(20px,1.7vw,28px)}
 @media (max-width:700px){.edge{display:none}#seq{display:block}.frame video{visibility:hidden}
   .stage{background:linear-gradient(#C3CDCF,#B5C0C4)}
   .frame .surround{-webkit-mask-image:linear-gradient(to bottom,#000 80%,transparent 96%);mask-image:linear-gradient(to bottom,#000 80%,transparent 96%)}
-  .dust{-webkit-mask-image:linear-gradient(to bottom,#000 72%,transparent 97%);mask-image:linear-gradient(to bottom,#000 72%,transparent 97%)}}
+  .dust{position:absolute;inset:0;-webkit-mask-image:linear-gradient(to bottom,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,#000 86%,transparent 100%)}}
 .frame.dim{opacity:.45}
 .frame video,.frame canvas,.frame .dust img{position:absolute;inset:0;width:1920px;height:1080px;display:block}
 .frame .surround{position:absolute;left:-960px;top:-1080px;width:3840px;height:2160px;display:block;max-width:none}
@@ -296,9 +300,9 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
   .ch .tag{top:calc(84px + env(safe-area-inset-top,0px));bottom:auto;right:16px}
   .ch1 .tag{top:auto!important;bottom:calc(250px + env(safe-area-inset-bottom,0px))!important;right:auto!important;left:16px!important}.ch1 .tag:not(.hu){left:auto!important;right:16px!important}
   /* hero: one box on the chest, noticed → loved → stay loved, the founders line above it */
-  .ch1 .c.hero{left:50%!important;right:auto!important;top:auto!important;bottom:calc(104px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%) translate3d(0,var(--dy),0);font-size:clamp(24px,7.4vw,32px);padding:12px 20px;text-align:center;white-space:nowrap}
+  .ch1 .c.hero{left:50%!important;right:auto!important;top:auto!important;bottom:calc(56px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%) translate3d(0,var(--dy),0);font-size:clamp(24px,7.4vw,32px);padding:12px 20px;text-align:center;white-space:nowrap}
   .ch1 .c.hero.on{transform:translateX(-50%)}
-  .ch1 .c.fore{left:50%!important;right:auto!important;top:auto!important;bottom:calc(34px + env(safe-area-inset-bottom,0px))!important;transform:translateX(-50%);font-size:14px;text-align:center;white-space:nowrap}
+  .ch1 .c.fore{left:50%!important;right:auto!important;top:calc(120px + env(safe-area-inset-top,0px))!important;bottom:auto!important;transform:translateX(-50%);font-size:14px;text-align:center;white-space:nowrap}
   #heroR{display:none}
   .hero .speed.m{display:block;top:calc(100% + 10px)}
   .ch2 .tag.side,.ch3 .tag.side{top:auto;bottom:calc(304px + env(safe-area-inset-bottom,0px));left:16px;right:auto}
@@ -413,7 +417,7 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
     <!-- 01 hero -->
     <div class="ch ch1 on" id="ch1">
       <span class="tag hu side" data-de="Mensch">human</span><span class="tag mc side" data-de="Maschine">machine</span>
-      <div class="c bare fore fz" data-at="0" style="--r:calc(50% + 16vw);--t:calc(31% - 36px);--dx:-20px" data-deh="für Gründer mit &lt;b&gt;großen Ideen.&lt;/b&gt;">for founders with <b>big ideas.</b></div>
+      <div class="c bare fore fz" data-at="0" style="--r:calc(50% + 16vw);--t:calc(31% - 36px);--dx:-20px" data-deh="für alle mit &lt;b&gt;großen Ideen.&lt;/b&gt;">for those with <b>big ideas.</b></div>
       <div class="g c hero fz" id="heroL" data-at="0" style="--r:calc(50% + 16vw);--t:31%;--dx:-20px"><span class="ln">get <b class="w" id="w1">noticed.</b></span><span class="speed m" aria-hidden="true">→ AT AI SPEED</span></div>
       <div class="g c hero r" id="heroR" data-at="0.09" style="--l:calc(50% + 13vw);--t:31%;--dx:20px"><b>stay loved.</b><span class="speed" aria-hidden="true">→ AT AI SPEED</span></div>
       <div class="g c hint" id="hint"><i></i><span data-de="scrollen">scroll</span></div>
@@ -707,7 +711,7 @@ form.addEventListener('submit',async ev=>{
   const need=[['fName',T('your name','deinen Namen')],['fEmail',T('where I can answer','wo ich dir antworten kann')],['fIdea',T('what is on your mind','was dich beschäftigt')]].find(([id])=>!$(id).value.trim()||($(id).type==='email'&&!$(id).validity.valid));
   if(need){msg.textContent=LANG==='de'?'Bitte zuerst '+need[1]+'.':need[1]+' first.';$(need[0]).focus();return}
   send.disabled=true;msg.textContent=T('sending…','wird gesendet…');
-  const data=Object.fromEntries(new FormData(form));data.access_key='WEB3FORMS_KEY';data.subject='withtiffany.co · an idea';data.from_name=data.name;
+  const data=Object.fromEntries(new FormData(form));data.access_key='71be7b4c-1251-4d22-86c1-651b3b6ae578';data.subject='withtiffany.co · an idea';data.from_name=data.name;
   try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});if(!r.ok)throw 0;
     msg.innerHTML=T('<b>got it.</b> with Tiffany.','<b>angekommen.</b> with Tiffany.');form.reset();}
   catch(e){msg.textContent=T("didn't go through. try again, or find me on LinkedIn: tiffanyslagos.",'Hat nicht geklappt. Versuch es nochmal oder schreib mir auf LinkedIn: tiffanyslagos.');send.disabled=false}
@@ -723,6 +727,23 @@ const close=()=>lb.classList.remove('on');$('lbX').addEventListener('click',clos
 const DE_ON=false; /* German copy is in place; set to true to show the EN | DE switch again */
 if(DE_ON){document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.lang)));let sv=null;try{sv=localStorage.getItem('wt-lang')}catch(e){}applyLang(sv||((navigator.language||'').toLowerCase().startsWith('de')?'de':'en'))}
 else{document.querySelectorAll('.lang').forEach(l=>l.style.setProperty('display','none','important'));applyLang('en')}
+
+/* ── phone: one swipe = one moment. Vertical swipes inside the film glide to the next / previous moment; the footer scrolls natively; sideways swipes stay native. ── */
+{const uw=typeof unwarp==='function'?unwarp:(p=>p);
+ const PTS=[0,.052,.1,.2,.262,.345,.3866,.4189,.4511,.4834,.60,.66,.80,.855,.965];
+ const yOf=p=>scrolly.offsetTop+uw(p)*(scrolly.offsetHeight-runH());
+ const end=()=>scrolly.offsetTop+scrolly.offsetHeight-runH();
+ const bar=document.createElement('i');bar.className='prog';bar.setAttribute('aria-hidden','true');document.body.appendChild(bar);
+ addEventListener('scroll',()=>{bar.style.setProperty('--k',Math.min(1,Math.max(0,scrollY/(document.documentElement.scrollHeight-innerHeight))).toFixed(4))},{passive:true});
+ let anim=0;const glide=(to,ms)=>{cancelAnimationFrame(anim);const from=scrollY,t0=performance.now(),e=t=>1-Math.pow(1-t,3);const step=now=>{const k=Math.min(1,(now-t0)/ms);scrollTo(0,from+(to-from)*e(k));if(k<1)anim=requestAnimationFrame(step)};anim=requestAnimationFrame(step)};
+ let x0=0,y0=0,busy=false,inside=false,axis='';
+ addEventListener('touchstart',e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY;axis='';inside=phone&&!still&&scrollY<end()-4&&!e.target.closest('input,textarea,select,.frames,form,.menu')},{passive:true});
+ addEventListener('touchmove',e=>{if(!inside)return;if(!axis){const dx=Math.abs(e.touches[0].clientX-x0),dy=Math.abs(e.touches[0].clientY-y0);if(dx+dy>6)axis=dy>=dx?'y':'x'}if(axis==='y')e.preventDefault()},{passive:false});
+ addEventListener('touchend',e=>{if(!inside||busy||axis!=='y')return;const dy=y0-e.changedTouches[0].clientY;if(Math.abs(dy)<24)return;
+   const y=scrollY,ys=PTS.map(yOf);let at=ys.findIndex(v=>Math.abs(v-y)<6),nxt;
+   if(dy>0)nxt=at>=0?at+1:ys.findIndex(v=>v>y);else nxt=at>=0?at-1:(()=>{let k=-1;ys.forEach((v,i)=>{if(v<y)k=i});return k})();
+   if(nxt<0)nxt=0;const to=(nxt<0||nxt>=ys.length)?end()+2:ys[nxt];busy=true;glide(to,620);setTimeout(()=>busy=false,640)},{passive:true});
+}
 })();
 </script>
 
