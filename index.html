@@ -405,7 +405,7 @@ footer small{display:block;margin-top:26px;font-size:10px;letter-spacing:.06em;c
       <img class="surround" src="a/surround.jpg" alt="">
       <div class="content">
         <video id="film" poster="a/poster.jpg" muted playsinline preload="auto" aria-label="Tiffany, half human, half machine: the film"></video>
-        <canvas id="seq" width="560" height="720" aria-hidden="true"></canvas>
+        <canvas id="seq" width="840" height="1080" aria-hidden="true"></canvas>
         <canvas id="snap" width="1920" height="1080" aria-hidden="true"></canvas>
         <div class="dust" id="dust"><img src="a/erase.webp" alt=""><canvas id="specks" width="1920" height="1080"></canvas></div>
       </div>
@@ -536,8 +536,22 @@ setTimeout(done,7000);if(!phone)film.load();
 /* phone: Apple-style frame sequence (iOS will not repaint a scrubbed paused video) */
 const NF=303,FPS=12,SEQ=[],seq=$('seq'),sq=seq.getContext('2d');let seqStarted=false,seqLoaded=0,lastIdx=-1;
 function loadSeq(){if(seqStarted)return;seqStarted=true;const order=[],seen=new Set();for(const st of [8,4,2,1])for(let i=0;i<NF;i+=st)if(!seen.has(i)){seen.add(i);order.push(i)}
-  let k=0;const next=()=>{if(k>=order.length)return;const i=order[k++],im=new Image();im.decoding='async';im.onload=()=>{const got=()=>{seqLoaded++;preBar.style.setProperty('--w',(4+96*Math.min(1,seqLoaded/Math.ceil(NF/4)))+'%');if(seqLoaded>=Math.ceil(NF/4))done();if(lastIdx<0)lastIdx=-2;next()};SEQ[i]=im;(im.decode?im.decode():Promise.resolve()).then(got,got)};im.onerror=next;im.src='a/f/'+String(i+1).padStart(4,'0')+'.webp'};for(let c=0;c<6;c++)next()}
-function drawSeq(t){let i=Math.min(NF-1,Math.max(0,Math.round(t*FPS)));if(!SEQ[i]){for(let d=1;d<NF;d++){if(SEQ[i-d]){i-=d;break}if(SEQ[i+d]){i+=d;break}}}if(!SEQ[i]||i===lastIdx)return;lastIdx=i;sq.drawImage(SEQ[i],0,0,560,720)}
+  let k=0;const next=()=>{if(k>=order.length)return;const i=order[k++],im=new Image();im.decoding='async';im.onload=()=>{const got=()=>{seqLoaded++;preBar.style.setProperty('--w',(4+96*Math.min(1,seqLoaded/Math.ceil(NF/4)))+'%');if(seqLoaded>=Math.ceil(NF/4)){done();loadHD()}if(lastIdx<0)lastIdx=-2;next()};SEQ[i]=im;(im.decode?im.decode():Promise.resolve()).then(got,got)};im.onerror=next;im.src='a/f2/'+String(i+1).padStart(4,'0')+'.webp'};for(let c=0;c<6;c++)next()}
+/* full-resolution stills at every swipe stop: soft frames while moving, the sharp frame fades in once the film rests; neighbouring frames blend while moving */
+const HDI=[0,13,26,54,86,106,120,135,144,223,257],HD=[];let hdStarted=false,hdK=0,lastKey='';sq.imageSmoothingQuality='high';
+function loadHD(){if(hdStarted)return;hdStarted=true;HDI.forEach(i=>{const im=new Image();im.decoding='async';im.onload=()=>{(im.decode?im.decode():Promise.resolve()).then(()=>{HD[i]=im},()=>{HD[i]=im})};im.src='a/h/'+String(i+1).padStart(4,'0')+'.webp'})}
+const nearF=i=>{i=Math.min(NF-1,Math.max(0,i));if(SEQ[i])return i;for(let d=1;d<NF;d++){if(SEQ[i-d])return i-d;if(SEQ[i+d])return i+d}return -1};
+function drawSeq(t,rest){
+  const ft=Math.min(NF-1,Math.max(0,t*FPS)),r=Math.round(ft);let i0=Math.floor(ft),a=ft-i0;if(rest||still){i0=r;a=0}
+  const A=nearF(i0),B=a>.04?nearF(i0+1):-1;if(A<0)return;
+  let hi=-1;for(const k of [r,r-1,r+1])if(HD[k]){hi=k;break}
+  hdK=rest&&hi>=0?Math.min(1,hdK+.08):0;
+  const key=A+'|'+B+'|'+Math.round(a*16)+'|'+hi+'|'+hdK.toFixed(2);if(lastIdx<0)lastKey='';if(key===lastKey)return;lastKey=key;lastIdx=A;
+  if(hi>=0&&hdK>=1){sq.drawImage(HD[hi],0,0,840,1080);return}
+  sq.globalAlpha=1;sq.drawImage(SEQ[A],0,0,840,1080);
+  if(B>=0&&B!==A){sq.globalAlpha=a;sq.drawImage(SEQ[B],0,0,840,1080)}
+  if(hdK>0){sq.globalAlpha=hdK;sq.drawImage(HD[hi],0,0,840,1080)}
+  sq.globalAlpha=1}
 if(phone)loadSeq();
 
 /* scale */
@@ -662,7 +676,7 @@ function draw(now){
   const sec=(now-t0)/1000;
   shown+=(target-shown)*(still?1:0.11);
   const t=timeAt(shown);
-  if(phone){if(shown<.905)drawSeq(t)}
+  if(phone){if(shown<.905)drawSeq(t,Math.abs(target-shown)<.0002)}
   else if(shown<.905&&film.readyState>=1&&!film.seeking&&Math.abs(film.currentTime-t)>1/30){try{film.currentTime=t}catch(e){}}
   chapters(shown);
   {const z=shown>.885&&scrolly.getBoundingClientRect().bottom>90;if(z!==homeFrost){homeFrost=z;$('home').classList.toggle('frost',z)}}
