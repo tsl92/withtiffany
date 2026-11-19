@@ -244,7 +244,7 @@
     .veil{background:rgba(228,231,231,.68)}
     .brand .logo{width:5.25rem}
     .brand span{display:none}
-    .breath{height:90vh}.breath.long{height:106vh}
+    .breath{height:54vh}.story + .breath{height:58vh}.breath.long{height:92vh}
     .hero{align-items:flex-end;padding-bottom:calc(1.375rem + env(safe-area-inset-bottom,0px))}
     .hero-copy{margin-left:0;width:100%;max-width:none;min-width:0;padding:1.375rem 1.25rem 1.25rem;border-radius:1.375rem;background:linear-gradient(160deg,rgba(255,255,255,.66),rgba(255,255,255,.44) 45%,rgba(255,255,255,.56));backdrop-filter:blur(1rem) saturate(1.3);-webkit-backdrop-filter:blur(1rem) saturate(1.3);box-shadow:inset 0 1px 1px -.5px rgba(255,255,255,.9),0 1.375rem 2.75rem -1.125rem rgba(13,13,14,.3)}
     .fz::before{display:none}
@@ -269,7 +269,9 @@
     .items .t small{font-size:.84rem}
     .items em.wide{border-radius:.625rem;padding:.3125rem .5625rem;line-height:1.5}
     .offer .cols{gap:0}.offer-head{display:contents}.items{order:1;margin-top:1.75rem}
-    .pay{order:2;width:100%;margin-top:1.5rem}
+    .lock{order:2;margin-top:3.5rem}
+    .you{margin-top:7rem}
+    .pay{order:3;width:100%;margin-top:1.125rem}
     .sure{padding:10vh 0 8vh}
     .buy{justify-content:flex-end;padding-bottom:calc(5.75rem + env(safe-area-inset-bottom,0px))}
     .closer{margin-left:0;width:100%;padding:1.375rem 1.25rem}
@@ -476,7 +478,7 @@ function fit(){const vw=root.clientWidth;if(vw!==VW||!H0){VW=vw;H0=stage.clientH
 const S=$('story'),O=$('offer'),U=$('sure'),Bu=$('buy');let K=[[0,0],[1,0]],hA=1e9,hB=1e9+1;
 function keys(){const vh=H0||innerHeight,sy=scrollY,top=el=>el.getBoundingClientRect().top+sy,bot=el=>top(el)+el.offsetHeight;
   hA=top(Bu)-vh*1.0;hB=top(Bu)-vh*0.3;
-  K=[[0,0],[top(S)-vh*0.55,3.4],[bot(S)-vh*0.5,4.9],[top(O)-vh*0.72,7.3],[bot(O)-vh*0.45,11.6],[top(U)-vh*0.7,16.4],[bot(U)-vh*0.45,20.2],[hA+(hB-hA)*0.4,DUR]];
+  K=[[0,0],[top(S)-vh*0.55,3.4],[bot(S)-vh*0.5,phone?5.3:4.9],[top(O)-vh*0.72,phone?7.0:7.3],[bot(O)-vh*0.45,phone?13.0:11.6],[top(U)-vh*0.7,phone?15.4:16.4],[bot(U)-vh*0.45,20.2],[hA+(hB-hA)*0.4,DUR]];
   for(let i=1;i<K.length;i++)if(K[i][0]<=K[i-1][0])K[i][0]=K[i-1][0]+1}
 function timeAt(y){if(y<=0)return 0;for(let i=1;i<K.length;i++){if(y<=K[i][0]){const [a,ta]=K[i-1],[b,tb]=K[i];return ta+(y-a)/(b-a)*(tb-ta)}}return DUR}
 addEventListener('resize',fit);
@@ -552,7 +554,7 @@ function draw(now){
   if(h<1){if(seqMode)drawSeq(t);else if(film.readyState>=1&&!film.seeking&&Math.abs(film.currentTime-t)>1/30){try{film.currentTime=t}catch(e){}}}
   /* read everything first */
   let v=0;for(const c of CH){const r=c.getBoundingClientRect();v=Math.max(v,Math.min(sm((vh*0.92-r.top)/(vh*0.34)),sm((r.bottom-vh*0.06)/(vh*0.34))))}
-  const ks=still?null:B.map(el=>{const r=el.getBoundingClientRect();let kin=sm((vh*0.985-r.top)/(vh*0.2));if(el.dataset.after!==undefined&&mqWide.matches)kin=sm((vh*0.7-happened.getBoundingClientRect().top)/(vh*0.2));if(el.dataset.late!==undefined)kin=sm((vh*0.8-r.top)/(vh*0.3));return Math.min(kin,sm((r.bottom-topCut)/(vh*0.15))).toFixed(2)});
+  const ks=still?null:B.map(el=>{const r=el.getBoundingClientRect();let kin=phone?sm((vh*0.995-r.top)/(vh*0.15)):sm((vh*0.985-r.top)/(vh*0.2));if(el.dataset.after!==undefined&&mqWide.matches)kin=sm((vh*0.7-happened.getBoundingClientRect().top)/(vh*0.2));if(el.dataset.late!==undefined)kin=sm((vh*0.8-r.top)/(vh*0.3));return Math.min(kin,sm((r.bottom-topCut)/(vh*0.15))).toFixed(2)});
   /* then write */
   set(veil,'opacity',v.toFixed(3),'veil');set(fog,'opacity',v.toFixed(3),'fog');
   if(ks)for(let i=0;i<B.length;i++){const el=B[i];if(el.__k!==ks[i]){el.__k=ks[i];el.style.setProperty('--k',ks[i])}}
