@@ -267,7 +267,8 @@
     .items .t{font-size:.94rem}
     .items .t small{font-size:.84rem}
     .items em.wide{border-radius:.625rem;padding:.3125rem .5625rem;line-height:1.5}
-    .pay{width:100%}
+    .offer .cols{gap:0}.offer-head{display:contents}.items{order:1;margin-top:1.75rem}
+    .pay{order:2;width:100%;margin-top:1.5rem}
     .sure{padding:10vh 0 8vh}
     .buy{justify-content:flex-end;padding-bottom:calc(5.75rem + env(safe-area-inset-bottom,0px))}
     .closer{margin-left:0;width:100%;padding:1.375rem 1.25rem}
@@ -339,7 +340,7 @@
         <span class="row after b" data-after><span class="tagl">After</span><span class="t">He closed the <span class="hl">same day</span>, for <span class="hl">+30% more</span>.</span></span>
       </h2>
       <ol class="beats">
-        <li class="beat glass b"><h3>My last client’s problem</h3><p>A bigger job came in and he didn’t know what to charge. His last one hadn’t been worth the hassle, and he was sure a higher price would lose him this client.</p></li>
+        <li class="beat glass b"><h3>My last client’s problem</h3><p>A bigger job came in and he didn’t know what to charge. His last one hadn’t been worth the hassle, and he couldn’t tell whether a higher price would lose or land him this client.</p></li>
         <li class="beat glass b"><h3>What we did</h3>
           <ol class="did">
             <li><span class="n">1</span><b>His numbers</b><span>We worked out what the job really costs him, then set three prices: his floor, his fair middle and the fee that would make him excited to do the work.</span></li>
@@ -384,7 +385,7 @@
   </div>
   <div class="wrap">
     <div class="you">
-      <h3 class="b">If only one campaign lands 30% higher, as my last client’s did, <b>one yes to your new offer will pay for this package 9.5 times over.</b></h3>
+      <h3 class="b">If only one campaign lands 30% higher, as my last client’s did, <b>one yes</b> to your new offer will pay for this package <b>9.5 times over.</b></h3>
       <div class="roi glass b">
         <table>
           <thead><tr><th scope="col">Your est. ROI on this investment</th><th scope="col">+Revenue</th><th scope="col">Pays this offer</th></tr></thead>
@@ -398,7 +399,7 @@
           </tbody>
         </table>
         <p class="even">It pays for itself at 3.2% more on one campaign.</p>
-        <p class="fine">His result on his first job. Yours might differ, but that is why I will give you an exceptional guarantee.</p>
+        <p class="fine">His result on his first job. Yours might differ, but that’s why I’ve thrown in an exceptional guarantee for you.</p>
       </div>
     </div>
   </div>
@@ -571,8 +572,8 @@ function draw(now){
 requestAnimationFrame(draw);
 
 /* in-page jumps land softly */
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1),el=id&&$(id);if(!el)return;e.preventDefault();
-  const y=id==='top'?0:el.getBoundingClientRect().top+scrollY-(id==='offer'?Math.max(0,(innerHeight-el.offsetHeight)/2):0);scrollTo({top:Math.max(0,y),behavior:still?'auto':'smooth'})}));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1),pay=phone&&a.closest('.closer')?document.querySelector('.pay'):null,el=pay||(id&&$(id));if(!el)return;e.preventDefault();
+  const y=id==='top'?0:el.getBoundingClientRect().top+scrollY-(id==='offer'||pay?Math.max(0,(innerHeight-el.offsetHeight)/2):0);scrollTo({top:Math.max(0,y),behavior:still?'auto':'smooth'})}));
 })();
 </script>
 </body>
